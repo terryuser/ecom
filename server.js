@@ -2,8 +2,8 @@ var http = require('http');
 var fs = require("fs");
 var qs = require('querystring');
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
-var dbUrl = "mongodb://localhost:27017/";
+//var url = "mongodb+srv://ecom_admin:admin@ecom-member-vcel9.mongodb.net/test?retryWrites=true&w=majority";
+var dbUrl = "mongodb+srv://ecom_admin:admin@ecom-member-vcel9.mongodb.net/test?retryWrites=true&w=majority";
 var isLogin = false;
 
 http.createServer(function(request, response) {
@@ -15,9 +15,6 @@ http.createServer(function(request, response) {
 	else if(request.url === "/"){
 		console.log("Requested URL is url" +request.url);
 		sendFileContent(response, "index.html", "text/html");
-	}
-    else if(request.url==="/test"){
-		sendFileContent(response, "web.html", "text/html"); 
 	}
 	else if(request.url==="/api/register"){
 		if (request.method === "POST") {
@@ -90,7 +87,7 @@ http.createServer(function(request, response) {
 					user = qs.parse(formData);
 					msg = JSON.stringify(user);
 
-					MongoClient.connect(url, function(err, db) {
+					MongoClient.connect(dburl, function(err, db) {
 						if (err) throw err;
 						var dbo = db.db("member");
 						var query = { login: info[0] , password: info[1]};

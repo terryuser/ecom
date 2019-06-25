@@ -1,0 +1,334 @@
+@import '_variable';
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+@mixin displayflex($important:false){
+	@if $important == true{
+		display: -ms-flexbox!important; display: -webkit-flex!important; display: flex!important;
+	}@else{
+		display: -ms-flexbox; display: -webkit-flex; display: flex;
+	}
+}
+
+@mixin fn-ul(){
+	font-size:0;letter-spacing: 0;
+	>li,>div{
+		font-size:$h14;
+		display:inline-block;
+	}
+}
+
+@mixin fontSize($size,$important:false){
+	@if $important == true{
+		font-size:$size!important;
+		font-family: $family !important;
+	line-height: $size+0.2 !important;
+	}@else{
+		font-size:$size;
+		font-family: $family;
+		line-height: $size+0.2;
+	}
+	
+}
+@mixin displayInLineBlock($pos){
+	display:inline-block;
+	vertical-align: $pos;
+}
+
+
+@mixin displayIcon($width,$height,$img,$my_url:$icon_url,$turn:before){
+	position:relative;
+	&:#{$turn}{
+		content: "";
+		background:url('#{$my_url}#{$img}') no-repeat left top /100% auto;
+		position:absolute;
+		display:block;
+		width:$width;
+		height:$height;
+		top:50%;
+		@if $turn == before{
+		left:0;
+		} @else {
+			right:0;
+		}
+		margin-top:-$height/2;
+	}
+}
+
+@mixin boxShadow($type){
+	box-shadow: $type;
+	-moz-box-shadow:$type;
+	-webkit-box-shadow:$type;
+}
+
+@mixin flexBasis($size){
+	flex-basis: $size;
+	-moz-flex-basis: $size;
+	-webkit-flex-basis: $size;
+	@if type-of($size) != number{
+		max-width: none;
+	} @else{
+		max-width: $size;
+	}
+}
+
+@mixin wsCol($colNum){
+
+	width:100%/$colNum;
+}
+
+@mixin mediaWidth($type){
+	@media (max-width:$type){
+		@content;
+	}
+}
+
+@mixin displayNone($important:'false'){
+	@if $important == 'true'{
+		display:none!important ;
+		visibility: hidden!important;
+	} @else{
+		display:none;
+		visibility: hidden;
+	}
+}
+
+
+@mixin setNormalbtn(){
+	background-color:$white!important;
+	color:$nav-bg-color!important;
+	border:1px solid $normal-btn-line!important;
+	span{margin:{left:auto; right:auto}}
+	&:hover{
+		background-color:$nav-bg-color!important;
+		color:$white!important;
+	}
+}
+@mixin setbluebtn(){
+	background-color:$nav-bg-color!important;
+	color:$white!important;
+	span{margin:{left:auto; right:auto}}
+	&:hover{
+		background-color:$blue!important;
+		color:$white!important;
+	}
+}
+
+@mixin setbuybtn(){
+	background-color:$btn-buy-color!important;
+	color:$white!important;
+	width:100%;
+	@include displayflex();
+	align-items: center;
+	justify-content:  center;
+	text-align: center;
+	span{margin:{left:auto; right:auto}}
+	&:hover{
+		background-color:$banner-word!important;
+		color:$white!important;
+	}
+}
+
+@mixin setSamplebtn($style:'blue',$width:207px, $height:36px, $fontsize:$h15){
+	@if $style == 'blue'{
+		@include setbluebtn();
+		border:none;
+	}@else if $style == 'normal'{
+		@include setNormalbtn();
+	}@else if $style == 'buy'{
+		@include setbuybtn();
+		border:none;
+	};
+	padding:0; width:$width; height:$height; @include text-align(); @include fontSize($fontsize); font-weight: normal;
+}
+@mixin underlinebtn($color,$size:$h14,$weight:normal){
+	padding: 0; border: none;font-weight: $weight;border-bottom: 1px solid $color; @include fontSize($size); color:$color;
+	&:hover{
+		background-color:transparent!important; color:lighten($color,10%)!important; border:none!important;
+	}
+}
+
+@mixin seticonfont($icon,$ifont:$fa-family,$front:'before'){
+	@if $front=='before'{
+		&:before{
+			content:$icon;
+			font-family: $ifont;
+			text-indent: 1px;
+		}
+	}@else{
+		&:after{
+			content:$icon;
+			font-family: $fa-family;
+			text-indent: 1px;
+		}
+	}
+
+}
+
+@mixin placeholder($color){
+	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	  color: $color;
+	}
+	&::-moz-placeholder { /* Firefox 19+ */
+	  color: $color;
+	}
+	&:-ms-input-placeholder { /* IE 10+ */
+	  color: $color;
+	}
+	&:-moz-placeholder { /* Firefox 18- */
+	  color: $color;
+	}
+}
+
+@mixin text-align($x:center,$y:center){
+	 @include displayflex(); align-items: $x; justify-content: $y ;
+}
+
+@mixin grey-line($size, $color, $line:'top'){
+	margin-#{$line}:$size;
+	padding-#{$line}:$size;
+	border-#{$line}:1px solid $color;
+}
+
+@mixin setInput(){
+	background-color:$white;
+
+}
+
+@mixin table-style($cls){
+
+	@content;
+}
+@mixin setfilter($color){
+	@include ws-filter(map-get($color,brightness),map-get($color,sepia),map-get($color,hue-rotate),map-get($color,saturate));
+}
+
+@mixin ws-filter($brightness,$sepia,$hue-rotate,$saturate){
+	filter: brightness($brightness) sepia($sepia) hue-rotate($hue-rotate) saturate($saturate);
+	-webkit-filter:  brightness($brightness) sepia($sepia) hue-rotate($hue-rotate) saturate($saturate);
+	-moz-filter:  brightness($brightness) sepia($sepia) hue-rotate($hue-rotate) saturate($saturate);
+}
+
+@mixin ws-display($select:true,$important:''){
+	@if $select == true{
+		display:none#{$important};
+		visibility: hidden#{$important};
+		opacity: 0#{$important};
+	} @else {
+		display:inherit#{$important};
+		visibility:inherit#{$important};
+		opacity: 1#{$important};
+	}
+}
+
+/* mixin for multiline */
+//@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: #ffffff){
+//  overflow: hidden;
+//  position: relative;
+//  line-height: $lineHeight;
+//  max-height: $lineHeight * $lineCount; 
+//  text-align: justify;
+////  margin-right: -1em;
+////  padding-right: 1em;
+//  &:before {
+//    content: '...';
+//    position: absolute;
+//    right: 0;
+//    bottom: 0;
+////	background: $bgColor;
+//	  width: 1.5em;
+//	  text-align: right;
+//	  
+//	  
+//background: $bgColor;
+//background: linear-gradient(to right, transparent 0%, $bgColor 39%);
+//background: -moz-linear-gradient(to right, transparent 0%, $bgColor 39%);
+//background: -webkit-linear-gradient(to right, transparent 0%, $bgColor 39%);
+//background: -o-linear-gradient(to right, transparent 0%, $bgColor 39%);
+//background: -ms-linear-gradient(to right, transparent 0%, $bgColor 39%);
+//	  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$bgColor}', endColorstr='#{$bgColor}', GradientType=1 );
+//
+//	  
+//  }
+//  &:after {
+//    content: '';
+//    position: absolute;
+//    right: 0;
+//    width: 1.5em;
+//    height: 1em;
+//    margin-top: 0.2em;
+//    background: $bgColor;
+//  }
+//	
+//	
+//		
+//          
+//}
+@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: #ffffff){
+	  overflow: hidden;
+            height: $lineHeight * $lineCount;
+            line-height: $lineHeight;
+
+        &:before {
+            content:"";
+            float: left;
+            width: 5px; 
+          height: $lineHeight * $lineCount; }
+
+        & > *:first-child {
+            float: right;
+            width: 100%;
+            margin-left: -5px; }        
+
+        &:after {
+            content: "...";  
+
+            box-sizing: content-box;
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+
+            float: right; position: relative;
+            top: 0 - $lineHeight; left: 100%; 
+            width: 3rem; margin-left: -3rem;
+            padding-right: 5px;
+            
+            text-align: right;
+
+            background: -webkit-gradient(linear, left top, right top,
+				from(rgba(255, 255, 255, 0)), to(#{$bgColor}), color-stop(50%, #{$bgColor}));
+            background: -moz-linear-gradient(to right, rgba(255, 255, 255, 0), #{$bgColor} 50%, #{$bgColor});            
+            background: -o-linear-gradient(to right, rgba(255, 255, 255, 0), #{$bgColor} 50%, #{$bgColor});
+            background: -ms-linear-gradient(to right, rgba(255, 255, 255, 0), #{$bgColor} 50%, #{$bgColor});
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), #{$bgColor} 50%, #{$bgColor}); }
+}
+
+
+@mixin transition($sec, $type: ease){
+	-webkit-transition: $sec $type;
+	-moz-transition: $sec $type;
+ 	 -o-transition: $sec $type;
+  	transition: $sec $type;
+}
+
+
+@mixin dotBG($bg-color,$dot-color,$dot-size,$dot-space) {
+	/*background:
+		linear-gradient(90deg, $bg-color ($dot-space - $dot-size), transparent 1%) center,
+		linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%) center,
+		$dot-color;
+	background-size: $dot-space $dot-space;*/
+
+
+	background: 
+    radial-gradient($dot-color $dot-size, transparent $dot-size),
+    radial-gradient($dot-color $dot-size, transparent $dot-size),
+    linear-gradient($bg-color $dot-size, transparent 0),
+		$bg-color;
+
+  background-size: $dot-space $dot-space, $dot-space $dot-space, 100% 6px;
+  background-position: ($dot-space / 2) ($dot-space / 2), 0px 0px, 0px 0px;
+}
+
