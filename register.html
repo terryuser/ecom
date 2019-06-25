@@ -25,7 +25,7 @@
 
     <section class="section slider-wrapper">
         <div class="reg-form-wrapper">
-            <form class="reg-form">
+            <div class="reg-form">
                 <div class="input-wrapper">
                     <label>Name</label>
                     <input type='text' class='name' id='reg-name' placeholder=''></input>
@@ -44,20 +44,18 @@
                 </div>
                 <div class="input-wrapper">
                     <label></label>
-                    <input type="checkbox" name="agreement" value="agreed">I agree with ecom.hk keep my information for
-                    development.</input>
+                    <input type="checkbox" name="agreement" value="agreed" id="agreement">I agree with ecom.hk keep my information for development.</input>
                 </div>
                 <div class="form-action">
-                    <input type="submit" value="Submit" id="register-submit">
+                    <button id="register-submit">Submit</button>
                 </div>
-            </form>
+            </div>
         </div>
         
     </section>
 
     <footer include-html="footer.html"></footer>
 
-    <script src="assets/web/assets/jquery/jquery.min.js"></script>
 </body>
     
 </html>
