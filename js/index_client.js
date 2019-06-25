@@ -5,7 +5,6 @@ $(document).ready(function () {
         var pass = $("#password").val();
 
         var loginData = login + "&" + pass;
-        console.log(loginData);
         
         $.ajax({
             type: 'POST',
@@ -17,22 +16,11 @@ $(document).ready(function () {
                     localStorage.setItem("login_status", "logined");
                     location.reload();
                 }  
-                console.log(data);
             },
             error: function(xhr, status, error) {
                 console.log('Error: ' + error.message);
             }
         });
-
-        /*
-        var correctPw = "admin";
-
-        if ($("#name").val() == correctPw) {
-            alert("success");
-        } else {
-            alert("fail");
-        }
-        */
 
     });
 

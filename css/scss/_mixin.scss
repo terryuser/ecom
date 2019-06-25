@@ -1,10 +1,18 @@
-@import '_variable';
+@import '_value';
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
      -moz-border-radius: $radius;
       -ms-border-radius: $radius;
           border-radius: $radius;
 }
+
+@mixin transition($sec, $type: ease){
+	-webkit-transition: $sec $type;
+	-moz-transition: $sec $type;
+ 	 -o-transition: $sec $type;
+  	transition: $sec $type;
+}
+
 @mixin displayflex($important:false){
 	@if $important == true{
 		display: -ms-flexbox!important; display: -webkit-flex!important; display: flex!important;
@@ -75,11 +83,6 @@
 	}
 }
 
-@mixin wsCol($colNum){
-
-	width:100%/$colNum;
-}
-
 @mixin mediaWidth($type){
 	@media (max-width:$type){
 		@content;
@@ -97,53 +100,54 @@
 }
 
 
-@mixin setNormalbtn(){
-	background-color:$white!important;
-	color:$nav-bg-color!important;
-	border:1px solid $normal-btn-line!important;
-	span{margin:{left:auto; right:auto}}
-	&:hover{
-		background-color:$nav-bg-color!important;
-		color:$white!important;
+
+@mixin btnBorder($bwidth, $style:solid, $color: $Main_color, $padding:5px){
+	background-color: none;
+	border: $bwidth $style $color;
+	padding: $padding;
+	color: $color;
+	cursor: pointer;
+	@include transition(0.25);
+
+	*{
+		color: $color;
 	}
-}
-@mixin setbluebtn(){
-	background-color:$nav-bg-color!important;
-	color:$white!important;
-	span{margin:{left:auto; right:auto}}
-	&:hover{
-		background-color:$blue!important;
-		color:$white!important;
+
+	&:hover {
+		background-color: $color;
+		color: $white;
+		transform: scale(1.05);
+
+		*{
+			color: $white;
+		}
 	}
 }
 
-@mixin setbuybtn(){
-	background-color:$btn-buy-color!important;
-	color:$white!important;
-	width:100%;
-	@include displayflex();
-	align-items: center;
-	justify-content:  center;
-	text-align: center;
-	span{margin:{left:auto; right:auto}}
-	&:hover{
-		background-color:$banner-word!important;
-		color:$white!important;
+@mixin btnSolid($color: $Main_color,$textcolor:$white, $padding:5px){
+	background-color: $color;
+	border: 1px solid $color;
+	padding: $padding;	
+	color: $textcolor;
+	cursor: pointer;
+	@include transition(0.25);
+
+	*{
+		color: $textcolor;
+	}
+
+	&:hover {
+		background-color: $color*1.1;
+		color: $textcolor;
+		transform: scale(1.05);
+
+		*{
+			color: $textcolor;
+		}
 	}
 }
 
-@mixin setSamplebtn($style:'blue',$width:207px, $height:36px, $fontsize:$h15){
-	@if $style == 'blue'{
-		@include setbluebtn();
-		border:none;
-	}@else if $style == 'normal'{
-		@include setNormalbtn();
-	}@else if $style == 'buy'{
-		@include setbuybtn();
-		border:none;
-	};
-	padding:0; width:$width; height:$height; @include text-align(); @include fontSize($fontsize); font-weight: normal;
-}
+
 @mixin underlinebtn($color,$size:$h14,$weight:normal){
 	padding: 0; border: none;font-weight: $weight;border-bottom: 1px solid $color; @include fontSize($size); color:$color;
 	&:hover{
@@ -306,12 +310,7 @@
 }
 
 
-@mixin transition($sec, $type: ease){
-	-webkit-transition: $sec $type;
-	-moz-transition: $sec $type;
- 	 -o-transition: $sec $type;
-  	transition: $sec $type;
-}
+
 
 
 @mixin dotBG($bg-color,$dot-color,$dot-size,$dot-space) {

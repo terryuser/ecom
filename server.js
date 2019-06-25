@@ -8,26 +8,24 @@ var isLogin = false;
 
 http.createServer(function(request, response) {
 
-	if(request.url === "/mes"){
-		response.writeHead(200, {'Content-Type': 'text/html'});
-		response.write('<b>Hey there!</b><br /><br />This is the default response. Requested URL is: ' + request.url);
-	}
-	else if(request.url === "/"){
-		console.log("Requested URL is url" +request.url);
+	if(request.url === "/"){
+		console.log("Request" + request.url + "success");
 		sendFileContent(response, "index.html", "text/html");
+	} 
+	else if (request.url === "/register") {
+		console.log("Request" + request.url + "success");
+		sendFileContent(response, "register.html", "text/html");
 	}
-	else if(request.url==="/api/register"){
+	else if(request.url==="/api/sign-up"){
 		if (request.method === "POST") {
 			console.log("Registing account");
 			formData = '';
 			msg = '';
 			return request.on('data', function (data) {
-				formData += data;
-				console.log(formData);
 
+				//Get the register info
+				formData += data;
 				regit = formData.split("&");
-				console.log(regit[0]);
-				console.log(regit[1]);
 
 				return request.on('end', function () {
 					var user;
@@ -40,7 +38,7 @@ http.createServer(function(request, response) {
 
 						var dbo = db.db("member");
 
-						var myobj = { login: regit[0] , password: regit[1]};
+						var myobj = { login: regit[0] , password: regit[1] };
 
 						dbo.collection("customers").find(myobj).toArray(function(err, result) {
 							if (err) {
@@ -71,9 +69,9 @@ http.createServer(function(request, response) {
 		}
 		 
 	}
-	else if(request.url==="/login"){
+	else if(request.url==="/api/sign-in"){
 		if (request.method === "POST") {
-			console.log("checking");
+			console.log("Login action");
 			formData = '';
 			msg = '';
 			return request.on('data', function (data) {
@@ -92,7 +90,6 @@ http.createServer(function(request, response) {
 						var dbo = db.db("member");
 						var query = { login: info[0] , password: info[1]};
 						dbo.collection("customers").find(query).toArray(function(err, result) {
-							
 
 							if (!err) {
 								response.end("success");
@@ -125,6 +122,7 @@ http.createServer(function(request, response) {
 			sendFileContent(response, "index.html", "text/html");
 		}
 	}
+	/*
 	else if(/^\/[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]*.js$/.test(request.url.toString())){
 		sendFileContent(response, request.url.toString().substring(1), "text/javascript");
 	}
@@ -145,7 +143,7 @@ http.createServer(function(request, response) {
 	}
 	else if(/^\/[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]*.tff$/.test(request.url.toString())){
 		sendFileContent(response, request.url.toString().substring(1), "text/css");
-	}
+	}*/
 	else if(/^\/[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]*.*$/.test(request.url.toString())){
 		sendFileContent(response, request.url.toString().substring(1), "text/css");
 	}

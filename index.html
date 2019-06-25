@@ -1,48 +1,32 @@
 <!DOCTYPE html>
 <html  >
 <head>
-
     <title>Home</title>
     <meta name="description" content="">
 
-    <link rel="shortcut icon" href="assets/images/logo2.png" type="image/x-icon">
+    <link rel="shortcut icon" href="" type="image/x-icon">
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 
+    <!-- Font Style -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/css/ecom.css">
+    <!--CSS style-->
+    <link rel="stylesheet" href="./css/ecom.css">
 
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/index_client.js"></script>
-
+    <!--Js script-->
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/includeHTML.js"></script>
+    <script src="./js/index.js"></script>
 </head>
 
 <body class="index">
-    <nav class='nav-bar'>
-        <a class='nav-brand' href='#'>ecom</a>
-        <div class='nav-menu'></div>
-        <div class="member_block" id="member_block">
-            <div class='login-action'>
-                <span>login</span>
-                <div class='action login-panel'>
-                    <input type='text' class='name' id='login-name' placeholder='username'></input>
-                    <input type='text' class='password' id='login-password' placeholder='password'></input>
-                    <button type="submit">Login</button>
-                </div>
-                <div class='action register'><span>register</span></div>
-            </div>
-        </div>
-    </nav>
+    <div id="header"></div>
 
     <section class="section slider-wrapper">
-        <picture>
-            <source media="(max-width: 767px)" srcset="./img/bg_stock.jpg">
-            <source media="(max-width: 1200px)" srcset="./img/bg_stock@2x.jpg">
-            <img src="./img/bg_stock@3x.jpg" alt="Flowers" style="width:auto;">
-        </picture>
+            <img src="./img/bg_stock@2x.jpg" srcset="./img/bg_stock.jpg 767w, ./img/bg_stock@2x.jpg 2000w, ./img/bg_stock@3x.jpg 4200w">
     </section>
 
     <section class="section news-wrapper">
@@ -58,11 +42,8 @@
         </div>
     </section>
 
-    <footer>
-        <div>ecom.hk</div>
-    </footer>
+    <footer include-html="footer.html"></footer>
 
-    <script src="assets/web/assets/jquery/jquery.min.js"></script>
 </body>
     
 </html>

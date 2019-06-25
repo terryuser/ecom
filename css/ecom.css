@@ -1,0 +1,182 @@
+/* mixin for multiline */
+/* mixin for multiline */
+/**
+ * Calculate the luminance for a color.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Calculate the contrast ratio between two colors.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Determine whether to use dark or light text on top of given color.
+ * Returns black for dark text and white for light text.
+ */
+/* mixin for multiline */
+.nav-bar {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  background-color: #212121;
+  padding: 15px 15px; }
+
+.brand {
+  flex-grow: auto; }
+
+.nav-menu {
+  flex-grow: 1;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center; }
+
+.nav-items {
+  display: inline-block;
+  margin: 0 5px; }
+  .nav-items a {
+    font-size: 1.4rem;
+    font-family: "Roboto", sans-serif;
+    line-height: 1.6rem;
+    color: #fff;
+    text-decoration: none; }
+    .nav-items a:hover {
+      color: #f19d1e; }
+
+.member_block {
+  margin: 0; }
+
+.action {
+  font-size: 1.4rem;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6rem;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  padding: 5px 15px;
+  display: inline-block; }
+
+.login {
+  background-color: #28a4e7;
+  border: 1px solid #28a4e7;
+  padding: 5px;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: 0.25 ease;
+  -moz-transition: 0.25 ease;
+  -o-transition: 0.25 ease;
+  transition: 0.25 ease;
+  margin-right: 5px; }
+  .login * {
+    color: #fff; }
+  .login:hover {
+    background-color: #2cb4fe;
+    color: #fff;
+    transform: scale(1.05); }
+    .login:hover * {
+      color: #fff; }
+
+.register {
+  background-color: #f19d1e;
+  border: 1px solid #f19d1e;
+  padding: 5px;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: 0.25 ease;
+  -moz-transition: 0.25 ease;
+  -o-transition: 0.25 ease;
+  transition: 0.25 ease; }
+  .register * {
+    color: #fff; }
+  .register:hover {
+    background-color: #ffad21;
+    color: #fff;
+    transform: scale(1.05); }
+    .register:hover * {
+      color: #fff; }
+
+.login-panel {
+  margin: 10px 0;
+  padding: 10px 18px;
+  display: none;
+  position: absolute;
+  right: 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #3b3b3b; }
+  .login-panel * {
+    display: block; }
+  .login-panel #login-name, .login-panel #login-password {
+    margin: 10px 0;
+    background: none;
+    padding: 5px;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    font-size: 1.4rem;
+    font-family: "Roboto", sans-serif;
+    line-height: 1.6rem; }
+    .login-panel #login-name::placeholder, .login-panel #login-password::placeholder {
+      color: #8a8a8a; }
+    .login-panel #login-name:focus, .login-panel #login-password:focus {
+      border: 0;
+      outline: none;
+      border-bottom: 2px solid #fff; }
+  .login-panel #login-action {
+    appearance: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #27ad1b;
+    border: 1px solid #27ad1b;
+    padding: 5px;
+    color: #fff;
+    cursor: pointer;
+    -webkit-transition: 0.25 ease;
+    -moz-transition: 0.25 ease;
+    -o-transition: 0.25 ease;
+    transition: 0.25 ease;
+    margin: 10px 0 0 auto; }
+    .login-panel #login-action * {
+      color: #fff; }
+    .login-panel #login-action:hover {
+      background-color: #2bbe1e;
+      color: #fff;
+      transform: scale(1.05); }
+      .login-panel #login-action:hover * {
+        color: #fff; }
+
+/* mixin for multiline */
+html {
+  font-family: "Roboto", sans-serif;
+  font-size: 10px; }
+
+body {
+  margin: 0;
+  font-size: 1.4rem;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6rem; }
+
+.section {
+  max-width: 100%; }
+
+img {
+  width: 100%; }
+
+/* mixin for multiline */
+.slider-wrapper {
+  max-height: 550px;
+  overflow: hidden; }
+  .slider-wrapper > picture {
+    width: 100%;
+    height: 100%; }
+  .slider-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+
+/*# sourceMappingURL=ecom.css.map */
