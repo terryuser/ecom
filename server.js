@@ -30,12 +30,10 @@ http.createServer(function(request, response) {
                     var user;
                     user = qs.parse(formData);
 					msg = JSON.stringify(user);
-					
-					var collection = "member";
 
-					// checkExist(dbname, collection, "email", regit[2]);
+                    checkLogin();
 
-					console.log(checkExist(dbname, collection, "Name", regit[0]));
+					// console.log(checkExist(dbname, collection, "Name", regit[0]));
 				
 					// if (valueExist == false) {
 					// 	var myobj = { Name: regit[0], password: regit[1], email: regit[2] };
@@ -142,7 +140,7 @@ http.createServer(function(request, response) {
     } else if (/^\/[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]*.min.css$/.test(request.url.toString())) {
         sendFileContent(response, request.url.toString().substring(1), "text/css");
     } else if (/^\/[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]*.tff$/.test(request.url.toString())) {
-        sendFileContent(response, request.url.toString().substring(1), "text/css");
+        sendFileContent(response, request.url.toString().substring(1), "text/tff");
     } else if (/^\/[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]*.*$/.test(request.url.toString())) {
         sendFileContent(response, request.url.toString().substring(1), "text/css");
     } else {
@@ -165,42 +163,29 @@ function sendFileContent(response, fileName, contentType) {
 }
 
 function checkExist(dbname, collection, field, value)  {
-	MongoClient.connect(dbUrl, function(err, db) {
-						
+    MongoClient.connect(dbUrl, function(err, db) {
+
 		if (err) throw err;
 
-		var dbo = db.db(dbname);
+        var dbo = db.db(dbname);
 
-		var count = dbo.collection(collection).find( { [field] : value} ).count();
+        dbo.collection(collection).find( { [field] : value }).toArray(function(err, result) {
 
-		console.log("count: " + count);
+            db.close();
 
-		var result; 
-		dbo.collection(collection).find( { [field] : value} ).count().then((val)=>result=val);
+            console.log("result length: " + result.length);
+            return result.length;
+        });
+    });
+}
 
-		// var result = new Promise( (exist, notexist) => {
-		// 	exist(true);
-		// 	notexist(false);
-		// });
+function checkLogin() {
+    
+    var collection = "member";
 
-		// result.then( (val) => {
-		// 	if ( count > 0) {
-		// 		val = true;
-		// 	} else {
-		// 		val = false;
-		// 	}
-		// 	console.log("val: " + val);
-		// 	return val;
-		// });
-		
-
-		// dbo.collection(collection).find( { [field] : value} ).count();
-
-		console.log("result: " + result);
-
-		db.close();
-
-	});
+    let exist = checkExist("ecom", collection, "Name", regit[0]);
+    
+    console.log("check login: " + exist);
 }
 
 function insertData(dbname, collection, data) {
