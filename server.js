@@ -4,9 +4,8 @@ var qs = require('querystring');
 const MongoClient = require('mongodb').MongoClient;
 //var url = "mongodb+srv://ecom_admin:admin@ecom-member-vcel9.mongodb.net/test?retryWrites=true&w=majority";
 var dbUrl = "mongodb+srv://ecom_admin:admin@ecom-member-vcel9.mongodb.net/test?retryWrites=true&w=majority";
+var dbname = "ecom";
 var isLogin = false;
-
-
 
 http.createServer(function(request, response) {
 
@@ -30,37 +29,45 @@ http.createServer(function(request, response) {
                 return request.on('end', function() {
                     var user;
                     user = qs.parse(formData);
-                    msg = JSON.stringify(user);
+					msg = JSON.stringify(user);
+					
+					var collection = "member";
 
-                    MongoClient.connect(dbUrl, function(err, db) {
+					// checkExist(dbname, collection, "email", regit[2]);
 
-                        if (err) throw err;
+					console.log(checkExist(dbname, collection, "Name", regit[0]));
+				
+					// if (valueExist == false) {
+					// 	var myobj = { Name: regit[0], password: regit[1], email: regit[2] };
 
-                        var dbo = db.db("ecom");
+					// 	insertData(dbname, collection, myobj);
+					// }
+	
+                    // MongoClient.connect(dbUrl, function(err, db) {
+						
+					// 	if (err) throw err;
 
-                        var myobj = { login: regit[0], password: regit[1], email: regit[2] };
+					// 	var dbo = db.db(dbname);
 
-                        // dbo.collection("member").find(myobj).toArray(function(err, result) {
-                        //     if (err) {
-                        dbo.collection("member").insertOne(myobj, function(err, res) {
+                    //     // dbo.collection("member").find( {"Name": regit[0]} ).toArray(function(err, result) {
+					// 	// 	if (result && result.length) {
+					// 	// 		console.log("Name is already existed");
+					// 	// 		response.end("Reg Failed");
+					// 	// 	} else {
+								
+					// 	// 	}
 
-                            if (err) {
-                                console.log("Acc already existed");
-                            } else {
-                                console.log("1 member regist success");
-                                isLogin = true;
-                            }
-
-                        });
-                        // } else {
-                        //     console.log("login name duplicate");
-                        //     response.end("Reg Failed");
-                        // }
-
-                        db.close();
-                        // });
-
-                    });
+					// 	// 	dbo.collection("member").insertOne(myobj, function(err, res) {
+					// 	// 		if (err) {
+									
+					// 	// 		} else {
+					// 	// 			console.log("1 member regist success");
+					// 	// 			isLogin = true;
+					// 	// 		}
+					// 	// 	});
+                    //     db.close();
+                    //     // });
+                    // });
                 });
             });
         } else {
@@ -85,8 +92,10 @@ http.createServer(function(request, response) {
                     msg = JSON.stringify(user);
 
                     MongoClient.connect(dburl, function(err, db) {
-                        if (err) throw err;
-                        var dbo = db.db("member");
+						if (err) throw err;
+
+						var dbo = db.db(dbname);
+						
                         var query = { login: info[0], password: info[1] };
                         dbo.collection("member").find(query).toArray(function(err, result) {
 
@@ -153,4 +162,64 @@ function sendFileContent(response, fileName, contentType) {
         }
         response.end();
     });
+}
+
+function checkExist(dbname, collection, field, value)  {
+	MongoClient.connect(dbUrl, function(err, db) {
+						
+		if (err) throw err;
+
+		var dbo = db.db(dbname);
+
+		var count = dbo.collection(collection).find( { [field] : value} ).count();
+
+		console.log("count: " + count);
+
+		var result; 
+		dbo.collection(collection).find( { [field] : value} ).count().then((val)=>result=val);
+
+		// var result = new Promise( (exist, notexist) => {
+		// 	exist(true);
+		// 	notexist(false);
+		// });
+
+		// result.then( (val) => {
+		// 	if ( count > 0) {
+		// 		val = true;
+		// 	} else {
+		// 		val = false;
+		// 	}
+		// 	console.log("val: " + val);
+		// 	return val;
+		// });
+		
+
+		// dbo.collection(collection).find( { [field] : value} ).count();
+
+		console.log("result: " + result);
+
+		db.close();
+
+	});
+}
+
+function insertData(dbname, collection, data) {
+	MongoClient.connect(dbUrl, function (err, db) {
+
+		if (err) throw err;
+
+		var dbo = db.db(dbname);
+
+		dbo.collection("member").insertOne(data, function (err, res) {
+
+			if (err) throw err;
+			
+			console.log("member regist success");
+			isLogin = true;
+			
+		});
+
+		db.close();
+
+	});
 }
