@@ -5,20 +5,16 @@ $(document).ready(function() {
 
 function register() {
     $("#register-submit").click(function() {
-        var name = $("#reg-name").val();
-        var password = $("#reg-password").val();
-        var email = $("#reg-email").val();
-
-        console.log("input name value: " + name);
-        console.log("input password value: " + password);
-        console.log("input email value: " + email);
+        var Input_name = $("#reg-name").val();
+        var Input_pw = $("#reg-password").val();
+        var Input_email = $("#reg-email").val();
 
         checkInputNull("#reg-name", "Please provide your name.");
         checkInputNull("#reg-password-confirm", "Please confirm your password.");
         checkInputNull("#reg-password", "Please set up your password.");
         checkInputNull("#reg-email", "Please provide your email.");
 
-        if ($("#reg-password-confirm").val() != password) {
+        if ($("#reg-password-confirm").val() != Input_pw) {
             $("#reg-password-confirm").parent().append("<div class='alertMsg'><p></p></div>");
             console.log("confirm pw error");
         } else {
@@ -27,13 +23,15 @@ function register() {
                 console.log("confirm agreement error");
             } else {
                 console.log("All confirm");
-                var loginData = name + "&" + password + "&" + email;
+                var loginData = { "name": Input_name, "password": Input_pw, "email": Input_email };
+                console.log(loginData);
+                //name + "&" + password + "&" + email;
                 console.log("Sending to mongodb");
                 $.ajax({
                     type: 'POST',
-                    url: 'http://127.0.0.1:9000/api/signup',
+                    url: '/api/signupsubmit',
                     dataType: "text",
-                    data: loginData,
+                    data: JSON.stringify(loginData),
                     success: function(data) {
                         console.log("Sending register data: " + data);
                     },
