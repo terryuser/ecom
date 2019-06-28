@@ -14,9 +14,11 @@ const MemberSchema = new Schema({
     email: {
         type: String,
         default: "null"
+    },
+    favlist: {
+        type: String,
+        default: ""
     }
-
-    //add in geo location
 });
 
 const Member = mongoose.model('member', MemberSchema);

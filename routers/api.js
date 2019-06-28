@@ -30,4 +30,10 @@ router.get('/member/:id', function(req, res, next){
     res.send({type: 'GET member'});
 });
 
+
+//Get stock symmary
+router.get('/stock/summary', function(req, res, next){
+    
+});
+
 module.exports = router;
