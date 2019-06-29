@@ -1,31 +1,31 @@
 $(document).ready(function () {
   indexBtn();
-  stockSammary();
+  // stockSammary();
 });
 
 function indexBtn() {
   
 }
 
-function stockSammary() {
-  var stockSammary = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-summary?region=HK&lang=en",
-    "method": "GET",
-    "headers": {
-      "X-RapidAPI-Key": "aa4a4ca3famsh848267a0a99e223p125cc3jsn3ec1cfd6d129",
-      "X-RapidAPI-Host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
-    }
-  }
+// function stockSammary() {
+//   var stockSammary = {
+//     "async": true,
+//     "crossDomain": true,
+//     "url": "https://stock.p.rapidapi.com/v1/funds",
+//     "method": "GET",
+//     "headers": {
+//       "X-RapidAPI-Host": "stock.p.rapidapi.com",
+//       "X-RapidAPI-Key": "aa4a4ca3famsh848267a0a99e223p125cc3jsn3ec1cfd6d129"
+//     }
+//   }
   
-  $.ajax(stockSammary).done(function (response) {
-    var data = response.marketSummaryResponse.result;
+//   $.ajax(stockSammary).done(function (response) {
+//     var data = response.result.funds;
 
-    $.each(data, function(i, item){
-      console.log(data[i].longName);
-      $("#stock_news_items").append('<div>' + data[i].longName + '</div>');
-    });
-  });
-}
+//     $.each(data, function(i, item){
+//       console.log(data[i].name);
+//       $("#stock_news_items").append('<div>' + data[i].name + '</div>');
+//     });
+//   });
+// }
 

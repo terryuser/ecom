@@ -20,6 +20,16 @@ app.get('/', function(req, res) {
     //__dirname : resolve to project folder.
 });
 
+app.get('/signup', function(req, res) {
+    res.sendFile(path.join(__dirname + '/signup.html'));
+    //__dirname : resolve to project folder.
+});
+
+app.get('/stock', function(req, res) {
+    res.sendFile(path.join(__dirname + '/stock-list.html'));
+    //__dirname : resolve to project folder.
+});
+
 //Request handling
 app.use(bodyParser.urlencoded({
     extended: true
