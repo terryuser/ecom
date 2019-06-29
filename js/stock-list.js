@@ -2,8 +2,12 @@ $(document).ready(function () {
     stockSammary();
 });
 
-function summaryAdd() {
-
+function AddToFav() {
+    $(".addFav").click(function() {
+        var stock = $(this).attr('data');
+        var member;
+        console.log(stock);
+    });
 }
 
 function stockSammary() {
@@ -20,11 +24,11 @@ function stockSammary() {
 
     $.ajax(stockSammary).done(function (response) {
         var data = response.result.funds;
-        $("#updateStamp").append('Updated on' + response.result.timestamp)
+        $("#updateStamp").append('Updated on' + response.result.timestamp);
 
         $.each(data, function (i, item) {
-            console.log(data[i].name);
 
+            //Define stock item format
             var keySymbol = '<div class"key symbol">'+ data[i].symbol + '</div>';
             var keyName = '<div class="key name">'+ data[i].name + '</div>';
             var keyExchange = '<div class="key exchange">'+ data[i].exchange + '</div>';
@@ -33,10 +37,14 @@ function stockSammary() {
             var keyPassion = '<div class="key passion">'+ data[i].passion + '</div>';
             var keyReach = '<div class="key reach">'+ data[i].reach + '</div>';
 
+            var addFavBTN = '<button class="addFav" data="' + data[i].symbol + '">add</button>';
+
             var listItemHTML = keySymbol + keyName + keyExchange + keyChange + keyStrength + keyPassion + keyReach;
 
-            $("#stock-list-block").append('<div class="listItem">' + listItemHTML + '</div>');
+            $("#stock-list-block").append('<div class="listItem" id=' + data[i].symbol + '>' + listItemHTML + '</div>' + addFavBTN);
         });
+
+        AddToFav();
     });
 }
 
