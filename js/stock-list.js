@@ -12,28 +12,33 @@ function AddToFav() {
 
 function stockSammary() {
 
-    var stockSymbol = {};
+    $.getJSON("stock.json", function (stockList) {
+        console.log(stockList);
+        
+        //Define stock item format
+        var keySymbol = '<div class"key code">' + stockList.symbol + '</div>';
+        var keyName = '<div class="key name">' + stockList.name + '</div>';
+    });
+
+    // var stockSymbol;
+    // console.log(stockSammary);
 
     var apiKey = "7UQB9ISU3Q3RNEKI";
 
-    console.log(stockCode);
 
-    var stockSammary = {
-        "async": true,
-        "crossDomain": true,
-        "url": "http://hq.sinajs.cn/list=hk00001",
-        "method": "GET"
-    }
+    // var stockSammary = {
+    //     "async": true,
+    //     "crossDomain": true,
+    //     "url": "http://hq.sinajs.cn/list=hk00001",
+    //     "method": "GET"
+    // }
 
-    $.ajax(stockSammary).done(function(response) {
-        var data = response.split('"');
+    // $.ajax(stockSammary).done(function(response) {
+    //     var data = response.split('"');
 
 
-        $("#updateStamp").append('Updated on' + data);
+    //     $("#updateStamp").append('Updated on' + data);
 
-        // //Define stock item format
-        // var keySymbol = '<div class"key code">' + stockCode + '</div>';
-        // var keyName = '<div class="key name">' + data[i].name + '</div>';
         // var keyExchange = '<div class="key exchange">' + data[i].exchange + '</div>';
         // var keyChange = '<div class="key change">' + data[i].change + '</div>';
         // var keyStrength = '<div class="key rsi">' + data[i].strength + '</div>';
@@ -45,8 +50,11 @@ function stockSammary() {
         // var listItemHTML = keySymbol + keyName + keyExchange + keyChange + keyStrength + keyPassion + keyReach;
 
         // $("#stock-list-block").append('<div class="listItem" id=' + data[i].symbol + '>' + listItemHTML + '</div>' + addFavBTN);
-        $("#stock-list-block").append('<div class="listItem">' + listItemHTML + '</div>');
+        // $("#stock-list-block").append('<div class="listItem">' + listItemHTML + '</div>');
 
-        AddToFav();
-    });
+        // AddToFav();
+    // });
 }
+
+
+var stockLista;
