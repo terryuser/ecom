@@ -15,7 +15,7 @@ const MemberSchema = new Schema({
         type: String,
         default: "null"
     },
-    favlist: {
+    watchlist: {
         type: String,
         default: ""
     }
