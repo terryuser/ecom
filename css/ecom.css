@@ -162,6 +162,7 @@ body {
   line-height: 1.6rem; }
 
 .section {
+  display: block;
   max-width: 100%; }
 
 img {
@@ -178,5 +179,23 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover; }
+
+/* mixin for multiline */
+.stock-list .stock-list-section {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; }
+.stock-list .list-block {
+  display: inline-block;
+  border: 1px solid #646464;
+  padding: 10px; }
+  .stock-list .list-block .theader {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex; }
+  .stock-list .list-block .listItem {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex; }
 
 /*# sourceMappingURL=ecom.css.map */

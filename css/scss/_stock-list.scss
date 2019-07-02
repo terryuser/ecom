@@ -1,0 +1,30 @@
+@import '_value';
+@import '_mixin';
+
+.stock-list {
+    .stock-list-section {
+        @include displayflex();
+    }
+
+    .list-block {
+        display: inline-block;
+        border: 1px solid $grey;
+        padding: 10px;
+
+        .list {
+
+        }
+
+        .theader {
+            @include displayflex();
+        }
+
+        .listItem {
+            @include displayflex();
+        }
+    }
+
+    .most-active-wrapper {
+        
+    }
+}

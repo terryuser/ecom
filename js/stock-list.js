@@ -1,5 +1,6 @@
 $(document).ready(function() {
     mostActive();
+    mostGainer();
 });
 
 function Add_watchlist() {
@@ -11,6 +12,10 @@ function Add_watchlist() {
 }
 
 function mostActive() {
+
+    var timeStamp = getTimeStamp();
+
+    $(".updateStamp.most-active").append(timeStamp);
 
     // var apiURL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" + item.symbol + "&apikey=" + apiKey;
     var apiURL = "https://financialmodelingprep.com/api/v3/stock/actives";
@@ -42,58 +47,51 @@ function mostActive() {
             $("#mostActive").append('<div class="listItem" id=' + item.ticker + '>' + listItemHTML + '</div>' + addFavBTN);
 
             Add_watchlist();
-
         });
-
-
-
     });
+}
 
+function mostGainer() {
 
+    var apiURL = "https://financialmodelingprep.com/api/v3/stock/gainers";
 
+    var stockapi = {
+        "async": true,
+        "crossDomain": true,
+        "url": apiURL,
+        "method": "GET"
+    }
 
+    $.ajax(stockapi).done(function(response) {
 
+        var data = response.mostGainerStock;
 
+        $.each(data, function(i, item) {
 
-    // var stockapi = {
-    //     "async": true,
-    //     "crossDomain": true,
-    //     "url": apiURL,
-    //     "method": "GET"
-    // }
+            //Define stock item format
+            var keySymbol = '<div class="key symbol">' + item.ticker + '</div>';
+            var keyName = '<div class="key name">' + item.companyName + '</div>';
+            var keyPrice = '<div class="key price">' + item.price + '</div>';
+            var keyChanges = '<div class="key changes">' + item.changes + '</div>';
+            var keyPercent = '<div class="key changesPercentage">' + item.changesPercentage + '</div>';
 
+            var listItemHTML = keySymbol + keyName + keyPrice + keyChanges + keyPercent;
 
+            var addFavBTN = '<button class="addFav" data="' + item.ticker + '">add</button>';
 
-    // var stockSymbol;
-    // console.log(stockSammary);
+            $("#mostGainer").append('<div class="listItem" id=' + item.ticker + '>' + listItemHTML + '</div>' + addFavBTN);
 
+            Add_watchlist();
+        });
+    });
+}
 
+function getTimeStamp() {
+    var todayTimeStamp = +new Date; // Unix timestamp in milliseconds
+    var oneDayTimeStamp = 1000 * 60 * 60 * 24; // Milliseconds in a day
+    var diff = todayTimeStamp - oneDayTimeStamp;
+    var yesterdayDate = new Date(diff);
+    var yesterdayString = "Updated on " + yesterdayDate.getFullYear() + '-' + (yesterdayDate.getMonth() + 1) + '-' + yesterdayDate.getDate();
 
-
-    // var stockSammary = {
-    //     "async": true,
-    //     "crossDomain": true,
-    //     "url": "http://hq.sinajs.cn/list=hk00001",
-    //     "method": "GET"
-    // }
-
-    // $.ajax(stockSammary).done(function(response) {
-    //     var data = response.split('"');
-
-
-    //     $("#updateStamp").append('Updated on' + data);
-
-    // var keyExchange = '<div class="key exchange">' + data[i].exchange + '</div>';
-    // var keyChange = '<div class="key change">' + data[i].change + '</div>';
-    // var keyStrength = '<div class="key rsi">' + data[i].strength + '</div>';
-    // var keyPassion = '<div class="key passion">' + data[i].passion + '</div>';
-    // var keyReach = '<div class="key reach">' + data[i].reach + '</div>';
-
-    // var listItemHTML = keySymbol + keyName + keyExchange + keyChange + keyStrength + keyPassion + keyReach;
-
-    // $("#stock-list-block").append('<div class="listItem" id=' + data[i].symbol + '>' + listItemHTML + '</div>' + addFavBTN);
-    // $("#stock-list-block").append('<div class="listItem">' + listItemHTML + '</div>');
-
-    // AddToFav();
-    // });
+    return yesterdayString;
 }

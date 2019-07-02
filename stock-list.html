@@ -27,19 +27,34 @@
 <body class="stock-list">
     <div id="header"></div>
 
-    <section class="section stock-list-wrapper">
-        <div class="pageTitle">Most Active<span id=updateStamp></span></div>
-        <div class="list-block" id="mostActive">
-            <div class="theader">
-                <div class="symbol">Symbol</div>
-                <div class="name">Name</div>
-                <div class="price">price</div>
-                <div class="changes">Change</div>
-                <div class="changesPercentage">RSI</div>
+    <section class="section stock-list-section">
+        <div class="list-block most-active-wrapper">
+            <div class="pageTitle">Most Active<span class="updateStamp most-active"></span></div>
+            <div class="list" id="mostActive">
+                <div class="theader">
+                    <div class="symbol">Symbol</div>
+                    <div class="name">Name</div>
+                    <div class="price">price</div>
+                    <div class="changes">Change</div>
+                    <div class="changesPercentage">Change Percentage</div>
+                </div>
             </div>
         </div>
-    </section>
 
+        <div class="list-block most-gainer-wrapper">
+                <div class="pageTitle">Most Active<span class="updateStamp most-gainer"></span></div>
+                <div class="list" id="mostGainer">
+                    <div class="theader">
+                        <div class="symbol">Symbol</div>
+                        <div class="name">Name</div>
+                        <div class="price">price</div>
+                        <div class="changes">Change</div>
+                        <div class="changesPercentage">Change Percentage</div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    
     <footer include-html="footer.html"></footer>
 
 </body>
