@@ -44,7 +44,7 @@ function mostActive() {
 
             var addFavBTN = '<button class="addFav" data="' + item.ticker + '">add</button>';
 
-            $("#mostActive").append('<div class="listItem" id=' + item.ticker + '>' + listItemHTML + '</div>' + addFavBTN);
+            $("#mostActive").append('<div class="listItem" id=' + item.ticker + '>' + listItemHTML + addFavBTN + '</div>');
 
             Add_watchlist();
         });
@@ -79,7 +79,7 @@ function mostGainer() {
 
             var addFavBTN = '<button class="addFav" data="' + item.ticker + '">add</button>';
 
-            $("#mostGainer").append('<div class="listItem" id=' + item.ticker + '>' + listItemHTML + '</div>' + addFavBTN);
+            $("#mostGainer").append('<div class="listItem" id=' + item.ticker + '>' + listItemHTML + addFavBTN + '</div>');
 
             Add_watchlist();
         });
