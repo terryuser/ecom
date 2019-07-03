@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $(".alertMsg").hide();
     register();
 });
 
@@ -9,31 +10,52 @@ function register() {
         var Input_pw = $("#reg-password").val();
         var Input_email = $("#reg-email").val();
 
-        checkInputNull("#reg-name", "Please provide your name.");
-        checkInputNull("#reg-password-confirm", "Please confirm your password.");
-        checkInputNull("#reg-password", "Please set up your password.");
-        checkInputNull("#reg-email", "Please provide your email.");
+        checkRegister();
 
         if ($("#reg-password-confirm").val() != Input_pw) {
-            $("#reg-password-confirm").parent().append("<div class='alertMsg'><p></p></div>");
-            console.log("confirm pw error");
+            $("#reg-password-confirm").next('.alertMsg').html("Please confirm your password.").show();
+            $("#register-submit").attr("disabled", true);
         } else {
             if (!$("#agreement").prop("checked")) {
-                $("#agreement").parent().append("<div class='alertMsg'><p>Please agree of the policy.</p></div>");
-                console.log("confirm agreement error");
+                $("#agreement").next('.alertMsg').html("Please agree of the policy.").show();
+                $("#agreement").change(function(){
+                    if(this.checked) {
+                        $("#agreement").next('.alertMsg').hide();
+                        $('#register-submit').removeAttr("disabled");
+                    }
+                });
             } else {
+                $("#agreement").next('.alertMsg').hide();
                 console.log("All confirm");
-                var loginData = { "name": Input_name, "password": Input_pw, "email": Input_email };
+                var loginData = { name: Input_name, password: Input_pw, email: Input_email };
                 console.log(loginData);
                 //name + "&" + password + "&" + email;
                 console.log("Sending to mongodb");
                 $.ajax({
                     type: 'POST',
-                    url: '/api/signupsubmit',
-                    dataType: "text",
-                    data: JSON.stringify(loginData),
+                    url: '/api/register/submit',
+                    dataType: "JSON",
+                    data: loginData,
                     success: function(data) {
-                        console.log("Sending register data: " + data);
+                        console.log("Respon data: " + data.message);
+
+                        if (data.message == "nameExist") {
+                            $('#reg-name').next('.alertMsg').html("This name has been used. Please change.").show();
+                        }
+
+                        if (data.message == "emailExist") {
+                            $('#reg-email').next('.alertMsg').html("This email address has been used. Please change.").show();
+                        }
+
+                        if (data.message == "success") {
+                            var date = new Date();
+                            date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
+
+                            $.cookie('login_name', Input_name, { path:'/', expires: date });
+                            $.cookie('login_status', "member", { path:'/', expires: date });
+
+                            window.location.replace("/register/success");
+                        }
                     },
                     error: function(xhr, status, error) {
                         console.log('Error: ' + error.message);
@@ -46,7 +68,19 @@ function register() {
 
 function checkInputNull(target, msg) {
     if ($(target).val() == null || $(target).val() == "") {
-        $(target).parent(".input-wrapper").append("<div class='alertMsg'><p>" + msg + "</p></div>");
-        return false;
+        $(target).next('.alertMsg').html(msg).show();
+        $("#register-submit").attr("disabled", true);
     }
+
+    $(target).on("change paste keyup", function() {
+        $(target).next('.alertMsg').hide();
+        $('#register-submit').removeAttr("disabled");
+    });
+}
+
+function checkRegister() {
+    checkInputNull("#reg-name", "Please provide your name.");
+    checkInputNull("#reg-password-confirm", "Please confirm your password.");
+    checkInputNull("#reg-password", "Please set up your password.");
+    checkInputNull("#reg-email", "Please provide your email.");
 }

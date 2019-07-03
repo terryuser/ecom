@@ -1,6 +1,7 @@
 $(document).ready(function() {
     mostActive();
     mostGainer();
+    majorIndex();
 });
 
 function Add_watchlist() {
@@ -53,6 +54,10 @@ function mostActive() {
 
 function mostGainer() {
 
+    var timeStamp = getTimeStamp();
+
+    $(".updateStamp.most-active").append(timeStamp);
+
     var apiURL = "https://financialmodelingprep.com/api/v3/stock/gainers";
 
     var stockapi = {
@@ -85,6 +90,46 @@ function mostGainer() {
         });
     });
 }
+
+
+function majorIndex() {
+
+    var timeStamp = getTimeStamp();
+
+    $(".updateStamp.most-active").append(timeStamp);
+
+    var apiURL = "https://financialmodelingprep.com/api/v3/majors-indexes";
+
+    var stockapi = {
+        "async": true,
+        "crossDomain": true,
+        "url": apiURL,
+        "method": "GET"
+    }
+
+    $.ajax(stockapi).done(function(response) {
+
+        var data = response.majorIndexesList;
+
+        $.each(data, function(i, item) {
+
+            //Define stock item format
+            var keySymbol = '<div class="key symbol">' + item.ticker + '</div>';
+            var keyName = '<div class="key name">' + item.indexName + '</div>';
+            var keyPrice = '<div class="key price">' + item.price + '</div>';
+            var keyChanges = '<div class="key changes">' + item.changes + '</div>';
+
+            var listItemHTML = keySymbol + keyName + keyPrice + keyChanges;
+
+            var addFavBTN = '<button class="addFav" data="' + item.ticker + '">add</button>';
+
+            $("#majorIndex").append('<div class="listItem" id=' + item.ticker + '>' + listItemHTML + addFavBTN + '</div>');
+
+            Add_watchlist();
+        });
+    });
+}
+
 
 function getTimeStamp() {
     var todayTimeStamp = +new Date; // Unix timestamp in milliseconds

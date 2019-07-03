@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="" type="image/x-icon">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+    <!-- Font Style -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
+
+    <!--CSS style-->
+    <link rel="stylesheet" href="../css/ecom.css">
+
+    <!--Js script-->
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/includeHTML.js"></script>
+    <script src="../js/numeral.min.js"></script>
+    <script src="../js/stock-list.js"></script>
+</head>
+
+<body class="stock-list">
+    <div id="header"></div>
+
+    <section class="section stock-list-section">
+
+        <div class="list-wrapper most-active-wrapper">
+            <div class="list-block">
+                <div class="pageTitle">Most Active<span class="updateStamp most-active"></span></div>
+                <div class="list" id="mostActive">
+                    <div class="theader">
+                        <div class="symbol">Symbol</div>
+                        <div class="name">Name</div>
+                        <div class="price">price</div>
+                        <div class="changes">Change</div>
+                        <div class="changesPercentage">Change Percentage</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <div class="list-wrapper most-gainer-wrapper">
+            <div class="list-block">
+                <div class="pageTitle">Most Gainer<span class="updateStamp most-gainer"></span></div>
+                <div class="list" id="mostGainer">
+                    <div class="theader">
+                        <div class="symbol">Symbol</div>
+                        <div class="name">Name</div>
+                        <div class="price">price</div>
+                        <div class="changes">Change</div>
+                        <div class="changesPercentage">Change Percentage</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-wrapper major-index-wrapper">
+            <div class="list-block">
+                <div class="pageTitle">Majors Indexes<span class="updateStamp major-index"></span></div>
+                <div class="list" id="majorIndex">
+                    <div class="theader">
+                        <div class="symbol">Symbol</div>
+                        <div class="name">Name</div>
+                        <div class="price">price</div>
+                        <div class="changes">Change</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    
+    <div id="footer"></div>
+
+</body>
+
+</html>

@@ -16,17 +16,22 @@ const PORT = process.env.PORT = 3000;
 
 //Get html files
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
+    res.sendFile(path.join(__dirname + '/html/index.html'));
     //__dirname : resolve to project folder.
 });
 
-app.get('/signup', function(req, res) {
-    res.sendFile(path.join(__dirname + '/signup.html'));
+app.get('/register', function(req, res) {
+    res.sendFile(path.join(__dirname + '/html/register.html'));
+    //__dirname : resolve to project folder.
+});
+
+app.get('/register/success', function(req, res) {
+    res.sendFile(path.join(__dirname + '/html/success.html'));
     //__dirname : resolve to project folder.
 });
 
 app.get('/stock', function(req, res) {
-    res.sendFile(path.join(__dirname + '/stock-list.html'));
+    res.sendFile(path.join(__dirname + '/html/stock-list.html'));
     //__dirname : resolve to project folder.
 });
 

@@ -1,12 +1,41 @@
 const express = require('express');
 const router = express.Router();
 const Member = require('../models/member');
+var findOrCreate = require('mongoose-findorcreate');
 
 //Add member
 router.post('/register/submit', function(req, res, next){
-    Member.create(req.body).then(function(member){
-        res.send(member);
-    }).catch(next);
+
+    var requestName = req.body;
+    console.log(requestName);
+
+    var sendJson = { message: "" };
+
+    Member.findOne({name: req.body.name}, function(err, result) {
+
+        if (result != null) {
+            sendJson.message = "nameExist";
+            console.log(sendJson);
+            res.send(sendJson);
+        } else {
+
+            Member.findOne({email: req.body.email}, function(err, result) {
+                if (result != null) {
+                    sendJson.message = "emailExist";
+                    console.log(sendJson);
+                    res.send(sendJson);
+                } else {
+
+                    Member.create(req.body).then(function (member) {
+                        sendJson.message = "success";
+                        console.log(sendJson);
+                        res.send(sendJson);
+                    }).catch(next);
+
+                }
+            });
+        }
+    });
 });
 
 //Update member
