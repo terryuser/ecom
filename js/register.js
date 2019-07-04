@@ -27,15 +27,15 @@ function register() {
             } else {
                 $("#agreement").next('.alertMsg').hide();
                 console.log("All confirm");
-                var loginData = { name: Input_name, password: Input_pw, email: Input_email };
-                console.log(loginData);
+                var Data = { name: Input_name, password: Input_pw, email: Input_email };
+                console.log(Data);
                 //name + "&" + password + "&" + email;
                 console.log("Sending to mongodb");
                 $.ajax({
                     type: 'POST',
                     url: '/api/register/submit',
                     dataType: "JSON",
-                    data: loginData,
+                    data: Data,
                     success: function(data) {
                         console.log("Respon data: " + data.message);
 
@@ -52,7 +52,7 @@ function register() {
                             var days = 7;
 
                             $.cookie('status', "member", { expires: days, path: '/' });
-                            $.cookie('user_id', Input_name, { expires: days, path: '/' });
+                            $.cookie('register', "yes", { expires: days, path: '/' });
                             $.cookie('user', Input_name, { expires: days, path: '/' });
 
                             window.location.replace("/register/success");

@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    //includeHTML();
     checkLogin();
     indexBtn();
 });
@@ -14,13 +13,13 @@ function indexBtn() {
         var login = $("#login-name").val();
         var pass = $("#login-password").val();
     
-        var loginData = login + "&" + pass;
+        var loginData = { name: login, password: pass };
     
         $.ajax({
             type: 'POST',
-            url: './api/sign-in',
-            dataType:"text",
-            data:loginData,
+            url: '/api/login',
+            dataType: "JSON",
+            data: loginData,
             success: function(data) {
                 if (data == 'success') {
                     localStorage.setItem("login_status", "logined");
