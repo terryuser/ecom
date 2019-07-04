@@ -18,8 +18,8 @@ function register() {
         } else {
             if (!$("#agreement").prop("checked")) {
                 $("#agreement").next('.alertMsg').html("Please agree of the policy.").show();
-                $("#agreement").change(function(){
-                    if(this.checked) {
+                $("#agreement").change(function() {
+                    if (this.checked) {
                         $("#agreement").next('.alertMsg').hide();
                         $('#register-submit').removeAttr("disabled");
                     }
@@ -48,11 +48,12 @@ function register() {
                         }
 
                         if (data.message == "success") {
-                            var date = new Date();
-                            date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
 
-                            $.cookie('login_name', Input_name, { path:'/', expires: date });
-                            $.cookie('login_status', "member", { path:'/', expires: date });
+                            var days = 7;
+
+                            $.cookie('status', "member", { expires: days, path: '/' });
+                            $.cookie('user_id', Input_name, { expires: days, path: '/' });
+                            $.cookie('user', Input_name, { expires: days, path: '/' });
 
                             window.location.replace("/register/success");
                         }

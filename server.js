@@ -38,7 +38,7 @@ app.get('/stock', function(req, res) {
 //Request handling
 app.use(bodyParser.urlencoded({
     extended: true
-  }));
+}));
 app.use(bodyParser.json());
 
 //Allow routers
@@ -50,9 +50,10 @@ app.use('/', express.static(__dirname + '/'));
 app.use('/js', express.static(__dirname + '/js'));
 app.use('/css', express.static(__dirname + '/css'));
 app.use('/img', express.static(__dirname + '/img'));
+app.use('/html', express.static(__dirname + '/html'));
 
 //Error handling
-app.use(function(err, req, res, next){
+app.use(function(err, req, res, next) {
     console.log(err.stack);
     res.status(422).send(err);
     //res.send({error: err.message});
