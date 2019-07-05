@@ -38,7 +38,7 @@ router.post('/register/submit', function(req, res, next) {
 //Login
 router.post('/login', function(req, res, next) {
 
-    var sendJson = { message: "" };
+    var sendJson = { message: "", name: "" };
 
     Member.findOne({ name: req.body.name }, function(err, result) {
 
@@ -47,6 +47,7 @@ router.post('/login', function(req, res, next) {
             console.log("Password on DB: " + result.name + "      Input PW: " + req.body.password);
             
             if (req.body.password == result.name) {
+                sendJson.name = result.name;
                 sendJson.message = "LoginSuccess";
                 console.log(sendJson);
                 res.send(sendJson);
@@ -60,6 +61,12 @@ router.post('/login', function(req, res, next) {
 
         }
     });
+});
+
+
+//Add stock to watchlist
+router.post('/watchlist/add', function(req, res, next) {
+
 });
 
 //Update member

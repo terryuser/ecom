@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var login_status = $.cookie('login_status');
+    var login_status = $.cookie('status');
     var check_stage = $.cookie('register');
     console.log(login_status);
 

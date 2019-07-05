@@ -30,6 +30,11 @@ app.get('/register/success', function(req, res) {
     //__dirname : resolve to project folder.
 });
 
+app.get('/watchlist', function(req, res) {
+    res.sendFile(path.join(__dirname + '/html/watchlist.html'));
+    //__dirname : resolve to project folder.
+});
+
 app.get('/stock', function(req, res) {
     res.sendFile(path.join(__dirname + '/html/stock-list.html'));
     //__dirname : resolve to project folder.
