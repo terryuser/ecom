@@ -1,26 +1,27 @@
 $(document).ready(function() {
     var login_status = $.cookie('status');
-    var check_stage = $.cookie('register');
+    var check_stage = localStorage.getItem("register");
     console.log(login_status);
 
     var title = "";
     var paragraph = "";
+    var holdTime = 10000;
 
     if (login_status == "member" && check_stage == "yes") {
         title = "Registration Success";
         paragraph = "Thank you for registration. You can add your stock into watchlist now! Enjoy!";
-        $.cookie('register', null);
+        localStorage.removeItem("register");
 
-        window.setTimeout(function(){
+        window.setTimeout(function() {
             window.location.replace("/");
-        }, 5000);
+        }, holdTime);
     } else {
         title = "Access Failed";
-        paragraph = "We will change to main page. Please wait.";
+        paragraph = "We will change to main page soon. Please wait.";
 
-        window.setTimeout(function(){
+        window.setTimeout(function() {
             window.location.replace("/");
-        }, 5000);
+        }, holdTime);
     }
 
     $(".title").html(title);

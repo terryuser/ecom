@@ -16,8 +16,7 @@ const MemberSchema = new Schema({
         default: "null"
     },
     watchlist: {
-        type: String,
-        default: ""
+        type: Array
     }
 });
 

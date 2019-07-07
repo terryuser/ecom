@@ -2,12 +2,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const router = express.Router();
+
 
 //Set up express
 const app = express();
 const path = require('path');
 
 //Connet to mongodb
+mongoose.set('useFindAndModify', false);
 mongoose.connect('mongodb+srv://ecom_admin:admin@ecom-member-vcel9.mongodb.net/ecom', { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 
@@ -35,9 +38,14 @@ app.get('/watchlist', function(req, res) {
     //__dirname : resolve to project folder.
 });
 
-app.get('/stock', function(req, res) {
+app.get('/stocklist', function(req, res) {
     res.sendFile(path.join(__dirname + '/html/stock-list.html'));
     //__dirname : resolve to project folder.
+});
+
+//Stock information
+app.get('/stock', function(req, res, next) {
+    res.sendFile(path.join(__dirname + '/html/stock.html'));
 });
 
 //Request handling

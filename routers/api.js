@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Member = require('../models/member');
-var findOrCreate = require('mongoose-findorcreate');
+
 
 //Register (Add member)
 router.post('/register/submit', function(req, res, next) {
@@ -45,7 +45,7 @@ router.post('/login', function(req, res, next) {
         if (result != null) {
 
             console.log("Password on DB: " + result.name + "      Input PW: " + req.body.password);
-            
+
             if (req.body.password == result.name) {
                 sendJson.name = result.name;
                 sendJson.message = "LoginSuccess";
@@ -56,7 +56,7 @@ router.post('/login', function(req, res, next) {
                 console.log(sendJson);
                 res.send(sendJson);
             }
-            
+
         } else {
 
         }
@@ -64,8 +64,38 @@ router.post('/login', function(req, res, next) {
 });
 
 
-//Add stock to watchlist
-router.post('/watchlist/add', function(req, res, next) {
+//Check stock is in watchlist
+router.post('/watchlist/check', function(req, res, next) {
+    Member.findOne({ name: req.body.name }, function(err, result) {
+        if (result.watchlist.includes(req.body.stock)) {
+            res.send("exist");
+        } else {
+            res.send("notExist");
+        }
+    });
+});
+
+//Add watchlist
+router.put('/watchlist/update', function(req, res, next) {
+    console.log(req.body);
+    Member.findOne({ name: req.body.name }).then(function(member) {
+        var sendJson = { message: "" };
+        if (member.watchlist.includes(req.body.stock)) {
+            sendJson.message = "exist";
+            console.log(sendJson);
+            res.send(sendJson);
+        } else {
+            var array = member.watchlist;
+            array.push(req.body.stock);
+            console.log("array = " + array);
+            Member.findOneAndUpdate({ name: req.body.name }, { $set: { watchlist: array } }, { returnNewDocument: true }).then(function(result) {
+                sendJson.message = "added";
+                console.log(sendJson);
+                res.send(sendJson);
+            })
+        }
+    })
+
 
 });
 
@@ -91,9 +121,5 @@ router.get('/member/:name', function(req, res, next) {
 });
 
 
-//Get stock symmary
-router.get('/stock/summary', function(req, res, next) {
-
-});
 
 module.exports = router;

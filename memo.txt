@@ -1,0 +1,4 @@
+1. Stock info page (done)
+2. add stock 
+3. get watch list
+4. delete watch list

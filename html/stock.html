@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="" type="image/x-icon">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+    <!-- Font Style -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
+
+    <!--CSS style-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../css/ecom.css">
+
+    <!--Js script-->
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/includeHTML.js"></script>
+    <script src="../js/jquery.cookie.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js" integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+
+    <script src="../js/stock.js"></script>
+
+</head>
+
+<body class="stock">
+
+    <div id="header"></div>
+
+    <section class="section">
+        <div class="bread"></div>
+        <div class="stockHeader">
+            <div class="IMG" style="width:50px; height:50px;"></div>
+            <div class="stockName"></div>
+            <div class="btn" id="WatchList"></div>
+        </div>
+        <div class="stockPrice"></div>
+        <div class="stockChange"></div>
+        <div class="updateStamp most-active"></div>
+        <div class="main-wrapper">
+            <div class="chart-wrapper">
+                <canvas id="chart" width="100" height="50"></canvas>
+            </div>
+            <div class="infoBlock">
+                <div class="des"></div>
+                <table class="info" id="info"></table>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+</body>
+
+</html>

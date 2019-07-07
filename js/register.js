@@ -52,10 +52,10 @@ function register() {
                             var days = 7;
 
                             $.cookie('status', "member", { expires: days, path: '/' });
-                            $.cookie('register', "yes", { expires: days, path: '/' });
                             $.cookie('user', Input_name, { expires: days, path: '/' });
+                            localStorage.setItem("register", "yes");
 
-                            window.location.replace("/register/success");
+                            location.replace("/register/success");
                         }
                     },
                     error: function(xhr, status, error) {
