@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Member = require('../models/member');
 
+const path = require('path');
+
 
 //Register (Add member)
 router.post('/register/submit', function(req, res, next) {
@@ -58,7 +60,7 @@ router.post('/login', function(req, res, next) {
             }
 
         } else {
-
+            console.log("request is null");
         }
     });
 });
@@ -66,14 +68,18 @@ router.post('/login', function(req, res, next) {
 
 //Check stock is in watchlist
 router.post('/watchlist/check', function(req, res, next) {
+    console.log("checking watchlist: " + req);
     Member.findOne({ name: req.body.name }, function(err, result) {
-        if (result.watchlist.includes(req.body.stock)) {
-            res.send("exist");
-        } else {
-            res.send("notExist");
+        if (result) {
+            if (result.watchlist.includes(req.body.stock)) {
+                res.send("exist");
+            } else {
+                res.send("notExist");
+            }
         }
     });
 });
+
 
 //Add watchlist
 router.put('/watchlist/update', function(req, res, next) {

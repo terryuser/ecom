@@ -39,7 +39,7 @@ app.get('/watchlist', function(req, res) {
 });
 
 app.get('/stocklist', function(req, res) {
-    res.sendFile(path.join(__dirname + '/html/stock-list.html'));
+    res.sendFile(path.join(__dirname + '/html/stocklist.html'));
     //__dirname : resolve to project folder.
 });
 
@@ -47,6 +47,7 @@ app.get('/stocklist', function(req, res) {
 app.get('/stock', function(req, res, next) {
     res.sendFile(path.join(__dirname + '/html/stock.html'));
 });
+
 
 //Request handling
 app.use(bodyParser.urlencoded({

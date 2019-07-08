@@ -1,5 +1,3 @@
-var InWatchList;
-
 $(document).ready(function() {
     getStock();
     addWatchList();
@@ -19,6 +17,11 @@ var getUrlParameter = function getUrlParameter(sParam) {
         }
     }
 };
+
+var InWatchList = false;
+var user = $.cookie('user');
+var symbol = getUrlParameter('symbol');
+var checkData = { name: user, stock: symbol };
 
 function getStock() {
     var timeStamp = getTimeStamp();
@@ -140,10 +143,6 @@ function getTimeStamp() {
 
 function checkWatchlist() {
 
-    var user = $.cookie('user');
-    var symbol = getUrlParameter('symbol');
-    var checkData = { name: user, stock: symbol }
-
     $.ajax({
         type: 'POST',
         url: '/api/watchlist/check',
@@ -164,9 +163,6 @@ function checkWatchlist() {
 
 
 function addWatchList() {
-    var username = $.cookie('user');
-    var stockSym = getUrlParameter('symbol');
-    var sendData = { name: username, stock: stockSym }
 
     checkWatchlist();
 

@@ -4,13 +4,6 @@ $(document).ready(function() {
     majorIndex();
 });
 
-function Add_watchlist() {
-    $(".addFav").click(function() {
-        var stock = $(this).attr('data');
-        var member;
-        console.log(stock);
-    });
-}
 
 function mostActive() {
 
@@ -43,11 +36,11 @@ function mostActive() {
 
             var listItemHTML = keySymbol + keyName + keyPrice + keyChanges + keyPercent;
 
-            var addFavBTN = '<button class="addFav" data="' + item.ticker + '">add</button>';
+            var moreBTN = '<div><a href="../stock?symbol=' + item.ticker + '">more</a></div>';
+            var addFavBTN = '<div class="addFav" data="' + item.ticker + '">add</div>';
 
-            $("#mostActive").append('<div class="listItem" id=' + item.ticker + '>' + listItemHTML + addFavBTN + '</div>');
+            $("#mostActive").append('<div class="listItem" id=' + item.ticker + '>' + listItemHTML + addFavBTN + moreBTN + '</div>');
 
-            Add_watchlist();
         });
     });
 }
@@ -82,11 +75,11 @@ function mostGainer() {
 
             var listItemHTML = keySymbol + keyName + keyPrice + keyChanges + keyPercent;
 
-            var addFavBTN = '<button class="addFav" data="' + item.ticker + '">add</button>';
+            var moreBTN = '<div><a href="../stock?symbol=' + item.ticker + '">more</a></div>';
+            var addFavBTN = '<div class="addFav" data="' + item.ticker + '">add</div>';
 
-            $("#mostGainer").append('<div class="listItem" id=' + item.ticker + '>' + listItemHTML + addFavBTN + '</div>');
+            $("#mostGainer").append('<div class="listItem" id=' + item.ticker + '>' + listItemHTML + addFavBTN + moreBTN + '</div>');
 
-            Add_watchlist();
         });
     });
 }
@@ -121,11 +114,11 @@ function majorIndex() {
 
             var listItemHTML = keySymbol + keyName + keyPrice + keyChanges;
 
-            var addFavBTN = '<button class="addFav" data="' + item.ticker + '">add</button>';
+            var moreBTN = '<div><a href="../stock?symbol=' + item.ticker + '">more</a></div>';
+            var addFavBTN = '<div class="addFav" data="' + item.ticker + '">add</div>';
 
-            $("#majorIndex").append('<div class="listItem" id=' + item.ticker + '>' + listItemHTML + addFavBTN + '</div>');
+            $("#majorIndex").append('<div class="listItem" id=' + item.ticker + '>' + listItemHTML + addFavBTN + moreBTN + '</div>');
 
-            Add_watchlist();
         });
     });
 }

@@ -11,8 +11,3 @@ function checkLogin() {
         $('#member_block').load('/html/guestNav.html');
     }
 }
-
-
-function setCookie(cname, cvalue, exdays) {
-    
-}

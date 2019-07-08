@@ -21,6 +21,8 @@ function indexBtn() {
             data: loginData,
             success: function(data) {
                 if (data.message == 'LoginSuccess') {
+                    var days = 7;
+                    
                     $.cookie('status', "member", { expires: days, path: '/' });
                     $.cookie('user', data.name, { expires: days, path: '/' });
                     location.reload();
