@@ -134,8 +134,10 @@ router.delete('/watchlist/delete', function(req, res, next) {
 });
 
 //Get member information
-router.get('/member/getInfo', function(req, res, next) {
+router.post('/member/getInfo', function(req, res, next) {
+    console.log("Getting info: " + JSON.stringify(req.body));
     Member.findOne({ name: req.body.name }).then(function(member) {
+        console.log("Result = " + member);
         res.send(member);
     })
 });
@@ -144,6 +146,7 @@ router.get('/member/getInfo', function(req, res, next) {
 router.put('/member/update/:name', function(req, res, next) {
     Member.findByIdAndUpdate({ name: req.params.name }, req.body).then(function() {
         Member.findOne({ name: req.params.name }).then(function(member) {
+            console.log(member);
             res.send(member);
         })
     })
