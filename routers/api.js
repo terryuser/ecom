@@ -68,20 +68,27 @@ router.post('/login', function(req, res, next) {
 
 //Check stock is in watchlist
 router.post('/watchlist/check', function(req, res, next) {
-    console.log("checking watchlist: " + req);
-    Member.findOne({ name: req.body.name }, function(err, result) {
+    console.log("checking watchlist: " + JSON.stringify(req.body));
+    var user = req.body.name;
+    Member.findOne({ name: user }, function(err, result) {
+        console.log("result:" + result);
         if (result) {
+            var respon = { message: "", stock: req.body.stock };
             if (result.watchlist.includes(req.body.stock)) {
-                res.send("exist");
+                respon.message = "exist";
+                console.log(respon.message);
+                res.send(respon);
             } else {
-                res.send("notExist");
+                respon.message = "notExist";
+                console.log(respon.message);
+                res.send(respon);
             }
         }
     });
 });
 
 
-//Add watchlist
+//Add stock into watchlist
 router.put('/watchlist/update', function(req, res, next) {
     console.log(req.body);
     Member.findOne({ name: req.body.name }).then(function(member) {
@@ -101,8 +108,29 @@ router.put('/watchlist/update', function(req, res, next) {
             })
         }
     })
+});
 
-
+//Delete stock in watchlist
+router.delete('/watchlist/delete', function(req, res, next) {
+    Member.findOne({ name: req.body.name }).then(function(member) {
+        var sendJson = { message: "" };
+        if (member.watchlist.includes(req.body.stock)) {
+            var array = member.watchlist;
+            var index = array.indexOf(req.body.stock);
+            console.log("array = " + array + ", index of result = " + index);
+            array.splice(index, 1);
+            console.log("after array = " + array);
+            Member.findOneAndUpdate({ name: req.body.name }, { $set: { watchlist: array } }, { returnNewDocument: true }).then(function(result) {
+                sendJson.message = "deleted";
+                console.log(sendJson);
+                res.send(sendJson);
+            });
+        } else {
+            sendJson.message = "notExist";
+            console.log(sendJson);
+            res.send(sendJson);
+        }
+    })
 });
 
 //Update member

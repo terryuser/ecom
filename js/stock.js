@@ -1,8 +1,3 @@
-$(document).ready(function() {
-    getStock();
-    addWatchList();
-});
-
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
         sURLVariables = sPageURL.split('&'),
@@ -20,8 +15,20 @@ var getUrlParameter = function getUrlParameter(sParam) {
 
 var InWatchList = false;
 var user = $.cookie('user');
+var status = $.cookie('status');
 var symbol = getUrlParameter('symbol');
-var checkData = { name: user, stock: symbol };
+var sendData = {name: user, stock: symbol};
+
+$(document).ready(function() {
+    getStock();
+
+    if (status == "member") {
+        checkWatchlist();
+        addWatchList();
+    } else {
+        $('#WatchList').hide();
+    }
+});
 
 function getStock() {
     var timeStamp = getTimeStamp();
@@ -88,10 +95,7 @@ function getStock() {
     }
 
     $.ajax(stockapi).done(function(response) {
-
         var ctx = $('#chart');
-        var chartData = [];
-
         var date = new Array;
         var closeVal = new Array;
         var showDays = 15;
@@ -100,9 +104,6 @@ function getStock() {
             date.push(response.historical[i].date);
             closeVal.push(response.historical[i].close)
         }
-
-        console.log(date);
-        console.log(closeVal);
 
         var chart = new Chart(ctx, {
             // The type of chart we want to create
@@ -142,35 +143,26 @@ function getTimeStamp() {
 }
 
 function checkWatchlist() {
-
+    console.log(sendData);
     $.ajax({
         type: 'POST',
         url: '/api/watchlist/check',
-        dataType: "JSON",
-        data: checkData,
-        success: function(data) {
-            if (data = "exist") {
+        dataType: "json",
+        data: sendData,
+        success: function(respon) {
+            console.log(respon.message);
+            if (respon.message == "exist") {
                 InWatchList = true;
+                $('#WatchList').removeClass("add").addClass("remove").html("Remove");
             } else {
                 InWatchList = false;
+                $('#WatchList').addClass("add").removeClass("remove").html("Add");
             }
-        },
-        error: function(xhr, status, error) {
-            console.log('Error: ' + error.message);
         }
     });
 }
 
-
 function addWatchList() {
-
-    checkWatchlist();
-
-    if (InWatchList == false) {
-        $('#WatchList').addClass("add").html("Add");
-    } else {
-        $('#WatchList').addClass("remove").html("Remove");
-    }
 
     var addBtn = $('#WatchList');
 
@@ -182,16 +174,33 @@ function addWatchList() {
                 dataType: "JSON",
                 data: sendData,
                 success: function(data) {
-                    InWatchList = true;
-                    addBtn.addClass("remove").removeClass("add").html("Remove");
+                    if (data.message == "added") {
+                        console.log("Add Success");
+                        InWatchList = true;
+                        addBtn.addClass("remove").removeClass("add").html("Remove");
+                    }
                 },
                 error: function(xhr, status, error) {
                     console.log('Error: ' + error.message);
                 }
             });
         } else {
-            InWatchList = false;
-            $(this).removeClass("remove").addClass("add").html("Add");
+            $.ajax({
+                type: 'DELETE',
+                url: '/api/watchlist/delete',
+                dataType: "JSON",
+                data: sendData,
+                success: function(data) {
+                    if (data.message == "deleted") {
+                        console.log("Delete Success");
+                        InWatchList = false;
+                        addBtn.removeClass("remove").addClass("add").html("Add");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log('Error: ' + error.message);
+                }
+            });
         }
     });
 }
