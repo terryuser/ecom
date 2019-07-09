@@ -35,11 +35,9 @@ function mostActive() {
             var keyPercent = '<div class="key changesPercentage">' + item.changesPercentage + '</div>';
 
             var listItemHTML = keySymbol + keyName + keyPrice + keyChanges + keyPercent;
-
-            var moreBTN = '<div><a href="../stock?symbol=' + item.ticker + '">more</a></div>';
             var addFavBTN = '<div class="addFav" data="' + item.ticker + '">add</div>';
 
-            $("#mostActive").append('<div class="listItem" id=' + item.ticker + '>' + listItemHTML + addFavBTN + moreBTN + '</div>');
+            $("#mostActive").append('<a href="../stock?symbol=' + item.ticker + '"><div class="listItem" id=' + item.ticker + '>' + listItemHTML + '</div></a>');
 
         });
     });
@@ -75,10 +73,9 @@ function mostGainer() {
 
             var listItemHTML = keySymbol + keyName + keyPrice + keyChanges + keyPercent;
 
-            var moreBTN = '<div><a href="../stock?symbol=' + item.ticker + '">more</a></div>';
             var addFavBTN = '<div class="addFav" data="' + item.ticker + '">add</div>';
 
-            $("#mostGainer").append('<div class="listItem" id=' + item.ticker + '>' + listItemHTML + addFavBTN + moreBTN + '</div>');
+            $("#mostGainer").append('<a href="../stock?symbol=' + item.ticker + '"><div class="listItem" id=' + item.ticker + '>' + listItemHTML + '</div></a>');
 
         });
     });
@@ -114,10 +111,9 @@ function majorIndex() {
 
             var listItemHTML = keySymbol + keyName + keyPrice + keyChanges;
 
-            var moreBTN = '<div><a href="../stock?symbol=' + item.ticker + '">more</a></div>';
             var addFavBTN = '<div class="addFav" data="' + item.ticker + '">add</div>';
 
-            $("#majorIndex").append('<div class="listItem" id=' + item.ticker + '>' + listItemHTML + addFavBTN + moreBTN + '</div>');
+            $("#majorIndex").append('<a href="../stock?symbol=' + item.ticker + '"><div class="listItem" id=' + item.ticker + '>' + listItemHTML + '</div></a>');
 
         });
     });

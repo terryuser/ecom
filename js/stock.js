@@ -75,7 +75,7 @@ function getStock() {
 
         $('.des').append('<div class="title">Description</div><div>' + Description + '</div>');
 
-        $('#info').append('<tr><th>Website</th><td>' + Website + '</td></tr>');
+        $('#info').append('<tr><th>Website</th><td><a href="' + Website + '">' + Website + '</a></td></tr>');
         $('#info').append('<tr><th>CEO</th><td>' + CEO + '</td></tr>');
         $('#info').append('<tr><th>Sector</th><td>' + Sector + '</td></tr>');
         $('#info').append('<tr><th>Industry</th><td>' + Industry + '</td></tr>');

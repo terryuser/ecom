@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="" type="image/x-icon">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+    <!-- Font Style -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,900&display=swap" rel="stylesheet">
+
+    <!--CSS style-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../css/ecom.css">
+
+    <!--Js script-->
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/includeHTML.js"></script>
+    <script src="../js/jquery.cookie.js"></script>
+
+    <script src="../js/watchlist.js"></script>
+
+</head>
+
+<body class="watchlist">
+
+    <div id="header"></div>
+
+    <section class="section profile">
+        <div class="profile-block">
+            <img src="../img/icon_info.svg">
+            <div class="info-block">
+                <div class="input-wrapper">
+                    <label>Name</label>
+                    <input type='text' class='name' id='reg-name' placeholder=''></input>
+                    <div class="alertMsg"></div>
+                </div>
+                <div class="input-wrapper">
+                    <label>E-mail</label>
+                    <input type='email' class='name' id='reg-email' placeholder=''></input>
+                    <div class="alertMsg"></div>
+                </div>
+                <div class="action">
+                    <div class="btn update" id="update">Update</div>
+                    <div class="btn cancel" id="cancel">Cancel</div>
+                </div>
+                <div class="action delete">
+                    <div class="btn deleteAC" id="deleteAC">Delete My Account</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section watchlist">
+        <div class="list-block"></div>
+    </section>
+
+    <div id="footer"></div>
+
+</body>
+
+</html>
