@@ -87,3 +87,24 @@ function deleteWatchlist(symbol) {
         }
     });
 }
+
+function deleteAC() {
+    var member_ID = memberInfo._id;
+
+    $.ajax({
+        type: 'DELETE',
+        url: '/api/member/delete',
+        dataType: "JSON",
+        data: deleteJSON,
+        success: function(data) {
+            if (data.message == "deleted") {
+                console.log("Delete Success");
+                var deleteItem = '#item_' + symbol;
+                $(deleteItem).remove();
+            }
+        },
+        error: function(xhr, status, error) {
+            console.log('Error: ' + error.message);
+        }
+    });
+}

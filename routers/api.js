@@ -153,7 +153,7 @@ router.put('/member/update/:name', function(req, res, next) {
 });
 
 //Delete member
-router.delete('/member/delete/:name', function(req, res, next) {
+router.delete('/member/delete', function(req, res, next) {
     Member.findByIdAndRemove({ name: req.params.name }).then(function(member) {
         res.send(member);
     })
