@@ -50,16 +50,11 @@
   font-size: 1.4rem;
   font-family: "Roboto", sans-serif;
   line-height: 1.6rem;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px;
   padding: 5px 15px;
   display: inline-block; }
 
 .login {
   background-color: #28a4e7;
-  border: 1px solid #28a4e7;
   padding: 5px;
   color: #fff;
   cursor: pointer;
@@ -67,6 +62,10 @@
   -moz-transition: 0.25 ease;
   -o-transition: 0.25 ease;
   transition: 0.25 ease;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
   margin-right: 5px; }
   .login * {
     color: #fff; }
@@ -79,14 +78,17 @@
 
 .register {
   background-color: #f19d1e;
-  border: 1px solid #f19d1e;
   padding: 5px;
   color: #fff;
   cursor: pointer;
   -webkit-transition: 0.25 ease;
   -moz-transition: 0.25 ease;
   -o-transition: 0.25 ease;
-  transition: 0.25 ease; }
+  transition: 0.25 ease;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px; }
   .register * {
     color: #fff; }
   .register:hover {
@@ -94,6 +96,28 @@
     color: #fff;
     transform: scale(1.05); }
     .register:hover * {
+      color: #fff; }
+
+.logout {
+  background-color: #f52a2a;
+  padding: 5px;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: 0.25 ease;
+  -moz-transition: 0.25 ease;
+  -o-transition: 0.25 ease;
+  transition: 0.25 ease;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px; }
+  .logout * {
+    color: #fff; }
+  .logout:hover {
+    background-color: #ff2e2e;
+    color: #fff;
+    transform: scale(1.05); }
+    .logout:hover * {
       color: #fff; }
 
 .login-panel {
@@ -132,7 +156,6 @@
     -ms-border-radius: 5px;
     border-radius: 5px;
     background-color: #27ad1b;
-    border: 1px solid #27ad1b;
     padding: 5px;
     color: #fff;
     cursor: pointer;
@@ -169,8 +192,34 @@ img {
   width: 100%; }
 
 .btn {
+  display: block;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+  background-color: #212121;
   padding: 5px;
-  cursor: pointer; }
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: 0.25 ease;
+  -moz-transition: 0.25 ease;
+  -o-transition: 0.25 ease;
+  transition: 0.25 ease; }
+  .btn * {
+    color: #fff; }
+  .btn:hover {
+    background-color: #242424;
+    color: #fff;
+    transform: scale(1.05); }
+    .btn:hover * {
+      color: #fff; }
+
+.updateStamp {
+  color: #646464;
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.4rem;
+  font-weight: normal; }
 
 .section {
   display: block;
@@ -196,9 +245,9 @@ img {
   padding: 10px;
   text-align: center; }
   #footer div {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-family: "Roboto", sans-serif;
-    line-height: 1.4rem;
+    line-height: 1.6rem;
     color: #fff; }
 
 /* mixin for multiline */
@@ -324,11 +373,43 @@ img {
   font-weight: bold;
   padding: 10px 15px;
   text-align: center; }
-  .stock-list .title .updateStamp {
-    color: #646464;
-    font-size: 1.2rem;
+
+/* mixin for multiline */
+.stock .stockHeader {
+  display: block;
+  position: relative;
+  padding: 8px 15px; }
+  .stock .stockHeader * {
+    vertical-align: middle; }
+  .stock .stockHeader .btn {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 0; }
+  .stock .stockHeader .add {
+    background-color: #28a4e7;
+    color: #fff; }
+  .stock .stockHeader .brand-block {
+    display: inline-block; }
+  .stock .stockHeader .index-block {
+    display: inline-block;
+    margin-left: 25px; }
+  .stock .stockHeader .stockPrice {
+    display: inline-block; }
+  .stock .stockHeader .stockChange {
+    font-size: 1.6rem;
     font-family: "Roboto", sans-serif;
-    line-height: 1.4rem;
-    font-weight: normal; }
+    line-height: 1.8rem;
+    display: inline-block; }
+.stock .IMG {
+  width: 50px;
+  height: 50px;
+  display: inline-block; }
+.stock .stockName {
+  font-size: 2.4rem;
+  font-family: "Roboto", sans-serif;
+  line-height: 2.6rem;
+  color: #212121;
+  display: inline-block; }
 
 /*# sourceMappingURL=ecom.css.map */

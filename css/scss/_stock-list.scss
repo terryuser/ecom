@@ -142,11 +142,5 @@
         font-weight: bold;
         padding: 10px $desktop_margin;
         text-align: center;
-
-        .updateStamp {
-            color: $grey;
-            @include fontSize($h12);
-            font-weight: normal;
-        }
     }
 }

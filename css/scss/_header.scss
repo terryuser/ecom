@@ -40,18 +40,24 @@
 
 .action {
     @include fontSize(1.4rem);
-    @include border-radius(5px);
     padding: 5px 15px;
     display: inline-block;
 }
 
 .login {
     @include btnSolid($Sub_color, $white);
+    @include border-radius(8px);
     margin-right: 5px;
 }
 
 .register {
     @include btnSolid($Main_color, $white);
+    @include border-radius(8px);
+}
+
+.logout {
+    @include btnSolid($Thr_color, $white);
+    @include border-radius(8px);
 }
 
 .login-panel {

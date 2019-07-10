@@ -1,0 +1,61 @@
+@import '_value';
+@import '_mixin';
+
+
+.stock {
+    .stockHeader {
+        // @include displayflex;
+        // flex-wrap: wrap;
+        display: block;
+        position: relative;
+        padding: 8px $desktop_margin;
+
+        *{
+            vertical-align: middle;
+        }
+
+        .btn {
+            display: block;
+            position: absolute;
+            right: $desktop_margin;
+            top: 0;
+        }
+    
+        .add {
+            background-color: $Sub_color;
+            color: $white;
+        }
+
+        .brand-block {
+            display: inline-block;
+        }
+
+        .index-block {
+            display: inline-block;
+            margin-left: 25px;
+        }
+
+        .stockPrice {
+            display: inline-block;
+        }
+
+        .stockChange {
+            @include fontSize($h16);
+            display: inline-block;
+        }
+    }
+
+    .IMG {
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+    }
+    
+    .stockName {
+        @include fontSize($h24);
+        color: $black;
+        display: inline-block;
+    }
+
+    
+}

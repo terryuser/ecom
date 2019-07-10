@@ -126,7 +126,6 @@
 
 @mixin btnSolid($color: $Main_color,$textcolor:$white, $padding:5px){
 	background-color: $color;
-	border: 1px solid $color;
 	padding: $padding;	
 	color: $textcolor;
 	cursor: pointer;

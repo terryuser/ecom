@@ -21,8 +21,15 @@ img {
 }
 
 .btn {
-    padding: 5px;
-    cursor: pointer;
+    display: block;
+    @include border-radius(8px);
+    @include btnSolid($black, $white);
+}
+
+.updateStamp {
+    color: $grey;
+    @include fontSize($h12);
+    font-weight: normal;
 }
 
 .section {
