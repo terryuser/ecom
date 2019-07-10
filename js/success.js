@@ -5,7 +5,7 @@ $(document).ready(function() {
 
     var title = "";
     var paragraph = "";
-    var holdTime = 10000;
+    var holdTime = 8000;
 
     if (login_status == "member" && check_stage == "yes") {
         title = "Registration Success";
@@ -26,4 +26,5 @@ $(document).ready(function() {
 
     $(".title").html(title);
     $(".paragraph").html(paragraph);
+    $('.secondCount').html(holdTime/1000);
 });

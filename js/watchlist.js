@@ -8,11 +8,33 @@ $(document).ready(function() {
     if ($.cookie('status') == "member") {
         getMemberInfo();
         console.log(memberInfo);
-        $('#member-name').val(memberInfo.name);
+        $('#member-name').html(memberInfo.name);
         $('#member-email').val(memberInfo.email);
+        $('#update').hide();
         displayWatchlist();
-    } else {
+        
+        $('#member-email').on("change paste keyup", function() {
+            if ($('#member-email').val() != memberInfo.email) {
+                $('#update').show();
+            } else {
+                $('#update').hide();
+            }
+         });
 
+        $('#update').click(function(){
+            updateInfo();
+        });
+
+        $('#cancel').click(function(){
+            $('#member-email').val(memberInfo.email);
+        });
+
+        $('#deleteAC').click(function(){
+            deleteAC();
+        })
+
+    } else {
+        window.location.replace("/register/success");
     }
 });
 
@@ -88,23 +110,56 @@ function deleteWatchlist(symbol) {
     });
 }
 
-function deleteAC() {
-    var member_ID = memberInfo._id;
+function updateInfo() {
+    var newEmail = $('#member-email').val();
+    var updateInfo = {name: user, email: newEmail};
 
     $.ajax({
-        type: 'DELETE',
-        url: '/api/member/delete',
+        type: 'PUT',
+        url: '/api/member/update',
         dataType: "JSON",
-        data: deleteJSON,
+        data: updateInfo,
         success: function(data) {
-            if (data.message == "deleted") {
-                console.log("Delete Success");
-                var deleteItem = '#item_' + symbol;
-                $(deleteItem).remove();
+            console.log(data.message);
+            if (data.message == "updated") {
+                $('#update').hide();
+                $('#member-email').addClass('green').next('.alertMsg').html('Email updated!');
+            } else if (data.message == "emailExist") {
+                $('#member-email').removeClass('green').next('.alertMsg').html('Email existed!');
+            } else {
+                $('#member-email').removeClass('green').next('.alertMsg').html('Unexperted error');
             }
         },
         error: function(xhr, status, error) {
             console.log('Error: ' + error.message);
         }
     });
+}
+
+function deleteAC() {
+    var member_ID = memberInfo._id;
+    var deleteMember = {name: user, _id: member_ID};
+
+    var alert = confirm("You confirm delete you account?");
+
+    if (alert == true) {
+        $.ajax({
+            type: 'DELETE',
+            url: '/api/member/delete',
+            dataType: "JSON",
+            data: deleteMember,
+            success: function(data) {
+                console.log(data);
+                $.cookie('status', null);
+                $.cookie('user', null);
+                console.log("Delete success");
+                window.location.replace("/");
+            },
+            error: function(xhr, status, error) {
+                console.log('Error: ' + error.message);
+            }
+        });
+    } else {
+
+    }
 }

@@ -161,12 +161,45 @@ body {
   font-family: "Roboto", sans-serif;
   line-height: 1.6rem; }
 
-.section {
-  display: block;
-  max-width: 100%; }
+a {
+  text-decoration: none;
+  color: inherit; }
 
 img {
   width: 100%; }
+
+.btn {
+  padding: 5px;
+  cursor: pointer; }
+
+.section {
+  display: block;
+  max-width: 100%; }
+  .section .title {
+    font-size: 1.8rem;
+    font-family: "Roboto", sans-serif;
+    line-height: 2rem; }
+
+.listItem {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; }
+
+.negative {
+  color: #e85e5f !important; }
+
+.positive {
+  color: #22ab55 !important; }
+
+#footer {
+  background-color: #212121;
+  padding: 10px;
+  text-align: center; }
+  #footer div {
+    font-size: 1.2rem;
+    font-family: "Roboto", sans-serif;
+    line-height: 1.4rem;
+    color: #fff; }
 
 /* mixin for multiline */
 .slider-wrapper {
@@ -181,21 +214,121 @@ img {
     object-fit: cover; }
 
 /* mixin for multiline */
-.stock-list .stock-list-section {
+.stock-list .stock-info-section {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex; }
+.stock-list .stock-list-section {
+  flex-basis: 30%;
+  -moz-flex-basis: 30%;
+  -webkit-flex-basis: 30%;
+  max-width: 30%;
+  order: 1;
+  padding: 0 5px; }
+  .stock-list .stock-list-section .list-wrapper {
+    padding: 5px;
+    padding-top: 0; }
+.stock-list .all-stock-wrapper {
+  flex-basis: 70%;
+  -moz-flex-basis: 70%;
+  -webkit-flex-basis: 70%;
+  max-width: 70%;
+  order: 0; }
 .stock-list .list-block {
-  display: inline-block;
-  border: 1px solid #646464;
-  padding: 10px; }
-  .stock-list .list-block .theader {
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex; }
+  display: block;
+  border: 1px solid #646464; }
+  .stock-list .list-block .list {
+    padding: 0; }
   .stock-list .list-block .listItem {
     display: -ms-flexbox;
     display: -webkit-flex;
-    display: flex; }
+    display: flex;
+    border-bottom: 1px #dfdfdf solid;
+    padding: 5px 8px; }
+    .stock-list .list-block .listItem > div {
+      flex-basis: 20%;
+      -moz-flex-basis: 20%;
+      -webkit-flex-basis: 20%;
+      max-width: 20%;
+      padding: 3px; }
+    .stock-list .list-block .listItem:hover {
+      background-color: #d4d4d4; }
+  .stock-list .list-block .pageTitle {
+    font-size: 1.6rem;
+    font-family: "Roboto", sans-serif;
+    line-height: 1.8rem;
+    font-weight: bold;
+    background-color: #383838;
+    color: #fff;
+    padding: 7px 12px; }
+  .stock-list .list-block .price, .stock-list .list-block .changes, .stock-list .list-block .changesPercentage {
+    text-align: center; }
+.stock-list .most-active-wrapper .list-block {
+  border-color: #fc6202; }
+.stock-list .most-active-wrapper .pageTitle {
+  background-color: #fc6202;
+  color: #fff; }
+.stock-list .most-active-wrapper .listItem:hover {
+  background-color: rgba(252, 98, 2, 0.5); }
+.stock-list .most-gainer-wrapper .list-block {
+  border-color: #067e16; }
+.stock-list .most-gainer-wrapper .pageTitle {
+  background-color: #067e16;
+  color: #fff; }
+.stock-list .most-gainer-wrapper .listItem:hover {
+  background-color: rgba(6, 126, 22, 0.5); }
+.stock-list .all-stock-wrapper .list-block {
+  position: relative; }
+  .stock-list .all-stock-wrapper .list-block:before {
+    content: "";
+    width: 1px;
+    height: 100%;
+    background-color: #dfdfdf;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    z-index: 3; }
+.stock-list .all-stock-wrapper .pageTitle {
+  position: relative;
+  z-index: 5; }
+.stock-list .all-stock-wrapper #allStock {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap; }
+  .stock-list .all-stock-wrapper #allStock > a {
+    flex-basis: 50%;
+    -moz-flex-basis: 50%;
+    -webkit-flex-basis: 50%;
+    max-width: 50%; }
+.stock-list .all-stock-wrapper .listItem .symbol {
+  flex-basis: 20%;
+  -moz-flex-basis: 20%;
+  -webkit-flex-basis: 20%;
+  max-width: 20%; }
+.stock-list .all-stock-wrapper .listItem .name {
+  flex-basis: 60%;
+  -moz-flex-basis: 60%;
+  -webkit-flex-basis: 60%;
+  max-width: 60%; }
+.stock-list .all-stock-wrapper .listItem .price {
+  flex-basis: 20%;
+  -moz-flex-basis: 20%;
+  -webkit-flex-basis: 20%;
+  max-width: 20%; }
+.stock-list .title {
+  font-size: 2rem;
+  font-family: "Roboto", sans-serif;
+  line-height: 2.2rem;
+  font-weight: bold;
+  padding: 10px 15px;
+  text-align: center; }
+  .stock-list .title .updateStamp {
+    color: #646464;
+    font-size: 1.2rem;
+    font-family: "Roboto", sans-serif;
+    line-height: 1.4rem;
+    font-weight: normal; }
 
 /*# sourceMappingURL=ecom.css.map */

@@ -60,7 +60,9 @@ router.post('/login', function(req, res, next) {
             }
 
         } else {
-            console.log("request is null");
+            sendJson.message = "LoginFailed";
+            console.log("request account is not exist");
+            res.send(sendJson);
         }
     });
 });
@@ -143,19 +145,28 @@ router.post('/member/getInfo', function(req, res, next) {
 });
 
 //Update member
-router.put('/member/update/:name', function(req, res, next) {
-    Member.findByIdAndUpdate({ name: req.params.name }, req.body).then(function() {
-        Member.findOne({ name: req.params.name }).then(function(member) {
-            console.log(member);
-            res.send(member);
-        })
+router.put('/member/update', function(req, res, next) {
+    var sendJson = { message: "" };
+    Member.findOne({ email: req.body.email }).then(function(result) {
+        if (result != null) {
+            sendJson.message = "emailExist";
+            console.log(sendJson);
+            res.send(sendJson);
+        } else {
+            Member.findOneAndUpdate({ name: req.body.name }, { $set: { email: req.body.email } }, { returnNewDocument: true }).then(function(result) {
+                sendJson.message = "updated";
+                console.log(req.body.name + " infomation" + sendJson);
+                res.send(sendJson);
+            });
+        }
     })
 });
 
 //Delete member
 router.delete('/member/delete', function(req, res, next) {
-    Member.findByIdAndRemove({ name: req.params.name }).then(function(member) {
-        res.send(member);
+    Member.findByIdAndRemove({ _id: req.body._id }).then(function(result) {
+        console.log("Account deleted");
+        res.send(result);
     })
 });
 

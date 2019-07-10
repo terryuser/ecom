@@ -32,17 +32,37 @@
         <img src="./img/bg_stock@2x.jpg" srcset="./img/bg_stock.jpg 767w, ./img/bg_stock@2x.jpg 2000w, ./img/bg_stock@3x.jpg 4200w">
     </section>
 
+    <section class="section promote-wrapper">
+        <div class="section title">Get the stock</div>
+        <div class="goods-list">
+            <div class="fast">Fast</div>
+            <div class="easily">Easily</div>
+            <div class="simple">Simple</div>
+        </div>
+    </section>
+
     <section class="section news-wrapper">
         <div class="news-board" id="news_board">
-            <div class="news-items stock_news" id="stock_news">
-                <div>Hotest stock</div>
-                <div id="stock_news_items"></div>
+            <div class="updateStamp"></div>
+            <div class="list-wrapper most-active-wrapper">
+                <div class="list-block">
+                    <div class="pageTitle">Most Active<span class="updateStamp most-active"></span></div>
+                    <div class="list" id="mostActive"></div>
+                </div>
             </div>
-            <div class="news-items vcurrency_news" id="vcurrency_news">
-                <div>Hotest Virtual currency</div>
-                <div id="vcurrency_news_items"></div>
+        
+            <div class="list-wrapper most-gainer-wrapper">
+                <div class="list-block">
+                    <div class="pageTitle">Most Gainer</div>
+                    <div class="list" id="mostGainer"></div>
+                </div>
             </div>
         </div>
+    </section>
+
+    <section class="section callaction-wrapper">
+        <div>Check your stock in 24 hours</div>
+        <div><a href="/register">Sign up</a></div>
     </section>
 
     <div id="footer"></div>

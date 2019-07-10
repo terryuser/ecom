@@ -8,14 +8,51 @@ html {
 
 body {
     margin: 0;
-    @include fontSize(1.4rem);
+    @include fontSize($h14);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    width: 100%;
+}
+
+.btn {
+    padding: 5px;
+    cursor: pointer;
 }
 
 .section {
     display: block;
     max-width: 100%;
+
+    .title {
+        @include fontSize($h18);
+    }
 }
 
-img {
-    width: 100%;
+.listItem {
+    @include displayflex();
+}
+
+.negative {
+    color: $negative !important;
+}
+
+.positive {
+    color: $positive !important;
+}
+
+#footer {
+    background-color: $black;
+    padding: 10px;
+    text-align: center;
+    
+    div {
+        @include fontSize($h14);
+        color: $white;
+    }
 }
