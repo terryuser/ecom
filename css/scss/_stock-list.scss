@@ -1,50 +1,42 @@
 @import '_value';
 @import '_mixin';
-
 .stock-list {
     .stock-info-section {
         @include displayflex();
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
-
     .stock-list-section {
         @include flexBasis(30%);
         order: 1;
-        padding: 0 5px;
-
+        padding-left: 5px;
         .list-wrapper {
             padding: 5px;
             padding-top: 0;
         }
     }
-
     .all-stock-wrapper {
         @include flexBasis(70%);
         order: 0;
     }
-
     .list-block {
         display: block;
         border: 1px solid $grey;
-        
         .list {
             padding: 0;
         }
-
         .listItem {
             @include displayflex();
             border-bottom: 1px #dfdfdf solid;
             padding: 5px 8px;
-
             >div {
                 @include flexBasis(20%);
                 padding: 3px;
             }
-
             &:hover {
                 background-color: #d4d4d4;
             }
         }
-
         .pageTitle {
             @include fontSize($h16);
             font-weight: bold;
@@ -52,50 +44,43 @@
             color: choose-contrast-color($grey2);
             padding: 7px 12px;
         }
-
-        .price, .changes , .changesPercentage  {
+        .price,
+        .changes,
+        .changesPercentage {
             text-align: center;
         }
     }
-
     .most-active-wrapper {
         .list-block {
             border-color: #fc6202;
         }
-
         .pageTitle {
             background-color: #fc6202;
             color: $white;
         }
-
         .listItem {
             &:hover {
                 background-color: rgba(252, 98, 2, 0.5);
             }
         }
     }
-
     .most-gainer-wrapper {
         .list-block {
             border-color: #067e16;
         }
-
         .pageTitle {
             background-color: #067e16;
             color: choose-contrast-color(#067e16);
         }
-
         .listItem {
             &:hover {
                 background-color: rgba(6, 126, 22, 0.5);
             }
         }
     }
-
     .all-stock-wrapper {
         .list-block {
             position: relative;
-
             &:before {
                 content: "";
                 width: 1px;
@@ -107,23 +92,18 @@
                 top: 0;
                 z-index: 3;
             }
-
         }
-
         .pageTitle {
             position: relative;
             z-index: 5;
         }
-
         #allStock {
             @include displayflex();
             flex-wrap: wrap;
-
             >a {
                 @include flexBasis(50%);
             }
         }
-
         .listItem {
             .symbol {
                 @include flexBasis(20%);
@@ -136,7 +116,6 @@
             }
         }
     }
-
     .title {
         @include fontSize($h20);
         font-weight: bold;

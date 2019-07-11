@@ -1,5 +1,3 @@
-/* mixin for multiline */
-/* mixin for multiline */
 /**
  * Calculate the luminance for a color.
  * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
@@ -12,7 +10,6 @@
  * Determine whether to use dark or light text on top of given color.
  * Returns black for dark text and white for light text.
  */
-/* mixin for multiline */
 .nav-bar {
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -70,7 +67,7 @@
   .login * {
     color: #fff; }
   .login:hover {
-    background-color: #2cb4fe;
+    background-color: #28a4e7;
     color: #fff;
     transform: scale(1.05); }
     .login:hover * {
@@ -92,7 +89,7 @@
   .register * {
     color: #fff; }
   .register:hover {
-    background-color: #ffad21;
+    background-color: #f19d1e;
     color: #fff;
     transform: scale(1.05); }
     .register:hover * {
@@ -114,7 +111,7 @@
   .logout * {
     color: #fff; }
   .logout:hover {
-    background-color: #ff2e2e;
+    background-color: #f52a2a;
     color: #fff;
     transform: scale(1.05); }
     .logout:hover * {
@@ -130,10 +127,11 @@
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   border-radius: 5px;
-  background-color: #3b3b3b; }
+  background-color: #494949; }
   .login-panel * {
     display: block; }
-  .login-panel #login-name, .login-panel #login-password {
+  .login-panel #login-name,
+  .login-panel #login-password {
     margin: 10px 0;
     background: none;
     padding: 5px;
@@ -143,9 +141,11 @@
     font-size: 1.4rem;
     font-family: "Roboto", sans-serif;
     line-height: 1.6rem; }
-    .login-panel #login-name::placeholder, .login-panel #login-password::placeholder {
+    .login-panel #login-name::placeholder,
+    .login-panel #login-password::placeholder {
       color: #8a8a8a; }
-    .login-panel #login-name:focus, .login-panel #login-password:focus {
+    .login-panel #login-name:focus,
+    .login-panel #login-password:focus {
       border: 0;
       outline: none;
       border-bottom: 2px solid #fff; }
@@ -167,13 +167,12 @@
     .login-panel #login-action * {
       color: #fff; }
     .login-panel #login-action:hover {
-      background-color: #2bbe1e;
+      background-color: #27ad1b;
       color: #fff;
       transform: scale(1.05); }
       .login-panel #login-action:hover * {
         color: #fff; }
 
-/* mixin for multiline */
 html {
   font-family: "Roboto", sans-serif;
   font-size: 10px; }
@@ -208,11 +207,39 @@ img {
   .btn * {
     color: #fff; }
   .btn:hover {
-    background-color: #242424;
+    background-color: #212121;
     color: #fff;
     transform: scale(1.05); }
     .btn:hover * {
       color: #fff; }
+
+.scrollTop {
+  position: fixed;
+  right: 15px;
+  bottom: 35px;
+  background-color: #383838;
+  padding: 3px;
+  cursor: pointer; }
+  .scrollTop .arrow {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    padding: 0 5px; }
+    .scrollTop .arrow:before {
+      content: "";
+      display: block;
+      position: relative;
+      transition: all 0.5s ease-in-out;
+      width: 15px;
+      height: 15px;
+      transform-origin: 50% 50%;
+      margin-top: 7.5px;
+      transform: rotate(-45deg);
+      box-shadow: inset -3px 3px 0 0 #fff;
+      border-radius: 0 2.25px 0 0; }
+    .scrollTop .arrow:hover:before {
+      transform: translate(0, -5px) rotate(-45deg); }
 
 .updateStamp {
   color: #646464;
@@ -223,7 +250,8 @@ img {
 
 .section {
   display: block;
-  max-width: 100%; }
+  max-width: 100%;
+  padding: 0 15px; }
   .section .title {
     font-size: 1.8rem;
     font-family: "Roboto", sans-serif;
@@ -250,7 +278,6 @@ img {
     line-height: 1.6rem;
     color: #fff; }
 
-/* mixin for multiline */
 .slider-wrapper {
   max-height: 550px;
   overflow: hidden; }
@@ -262,18 +289,19 @@ img {
     height: 100%;
     object-fit: cover; }
 
-/* mixin for multiline */
 .stock-list .stock-info-section {
   display: -ms-flexbox;
   display: -webkit-flex;
-  display: flex; }
+  display: flex;
+  padding-top: 15px;
+  padding-bottom: 15px; }
 .stock-list .stock-list-section {
   flex-basis: 30%;
   -moz-flex-basis: 30%;
   -webkit-flex-basis: 30%;
   max-width: 30%;
   order: 1;
-  padding: 0 5px; }
+  padding-left: 5px; }
   .stock-list .stock-list-section .list-wrapper {
     padding: 5px;
     padding-top: 0; }
@@ -310,7 +338,9 @@ img {
     background-color: #383838;
     color: #fff;
     padding: 7px 12px; }
-  .stock-list .list-block .price, .stock-list .list-block .changes, .stock-list .list-block .changesPercentage {
+  .stock-list .list-block .price,
+  .stock-list .list-block .changes,
+  .stock-list .list-block .changesPercentage {
     text-align: center; }
 .stock-list .most-active-wrapper .list-block {
   border-color: #fc6202; }
@@ -374,7 +404,6 @@ img {
   padding: 10px 15px;
   text-align: center; }
 
-/* mixin for multiline */
 .stock .stockHeader {
   display: block;
   position: relative;

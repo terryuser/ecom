@@ -1,6 +1,5 @@
 @import '_value';
 @import '_mixin';
-
 html {
     font-family: $family;
     font-size: 10px;
@@ -26,6 +25,18 @@ img {
     @include btnSolid($black, $white);
 }
 
+.scrollTop {
+    position: fixed;
+    right: 15px;
+    bottom: 35px;
+    background-color: $grey2;
+    padding: 3px;
+    cursor: pointer;
+    .arrow {
+        @include arrowAnimation($white, 15px, 3px, top);
+    }
+}
+
 .updateStamp {
     color: $grey;
     @include fontSize($h12);
@@ -35,7 +46,7 @@ img {
 .section {
     display: block;
     max-width: 100%;
-
+    padding: 0 $desktop_margin;
     .title {
         @include fontSize($h18);
     }
@@ -57,7 +68,6 @@ img {
     background-color: $black;
     padding: 10px;
     text-align: center;
-    
     div {
         @include fontSize($h14);
         color: $white;
