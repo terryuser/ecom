@@ -17,9 +17,11 @@ var InWatchList = false;
 var user = $.cookie('user');
 var status = $.cookie('status');
 var symbol = getUrlParameter('symbol');
-var sendData = {name: user, stock: symbol};
+var sendData = { name: user, stock: symbol };
 
 $(document).ready(function() {
+    document.title = symbol;
+
     getStock();
 
     if (status == "member") {
@@ -60,6 +62,9 @@ function getStock() {
         var Industry = data.industry;
         var CEO = data.ceo;
         var Website = data.website;
+        var Beta = data.beta;
+        var VolAvg = data.volAvg;
+        var MktCap = data.mktCap;
 
         if (Change > 0) {
             $('.stockChange').addClass("positive");
@@ -70,10 +75,10 @@ function getStock() {
         $('.IMG').html('<img src="https://financialmodelingprep.com/stocks/' + symbol.toLowerCase() + '.png" alt="' + Name + '">');
 
         $('.stockName').html(Name + "(" + symbol + ")<div>" + "</div>");
-        $('.stockPrice').html('Price: ' + Price);
+        $('.stockPrice').html('Price:<span>' + Price + '</span>');
         $('.stockChange').html(Change + '<span>' + ChangesPercentage + '</span>');
 
-        $('.des').append('<div class="title">Description</div><div>' + Description + '</div>');
+        $('.des').append('<div class="title">Description</div><div class="content">' + Description + '</div>');
 
         $('#info').append('<tr><th>Website</th><td><a href="' + Website + '">' + Website + '</a></td></tr>');
         $('#info').append('<tr><th>CEO</th><td>' + CEO + '</td></tr>');
@@ -82,6 +87,10 @@ function getStock() {
         $('#info').append('<tr><th>Exchange</th><td>' + Exchange + '</td></tr>');
         $('#info').append('<tr><th>Range</th><td>' + Range + '</td></tr>');
         $('#info').append('<tr><th>Last Div</th><td>' + LastDiv + '</td></tr>');
+
+        $('#index').append('<tr><th>Beta</th><td>' + Beta + '</td></tr>');
+        $('#index').append('<tr><th>Average Volume</th><td>' + VolAvg + '</td></tr>');
+        $('#index').append('<tr><th>Market Capitalization</th><td>' + MktCap + '</td></tr>');
     });
 
     //Display chart

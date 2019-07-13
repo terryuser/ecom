@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Home</title>
+    <title>Stock List</title>
     <meta name="description" content="">
 
     <link rel="shortcut icon" href="" type="image/x-icon">
@@ -28,8 +28,11 @@
 
 <body class="stock-list">
     <div id="header"></div>
-
-    <div class="title">Stock<div class="updateStamp"></div></div>
+    <section class="section title_section">
+        <div class="site_title">Stock List
+            <div class="updateStamp"></div>
+        </div>
+    </section>
     <section class="section stock-info-section">
         <div class="stock-list-section">
             <div class="list-wrapper most-active-wrapper">
@@ -58,7 +61,13 @@
         <div class="all-stock-wrapper">
             <div class="list-block">
                 <div class="pageTitle">All Companies ticker symbols</div>
-                <div class="list" id="allStock"></div>
+                <div class="tableList" id="allStock">
+                    <div class="spinner">
+                        <span class="spinner-inner-1"></span>
+                        <span class="spinner-inner-2"></span>
+                        <span class="spinner-inner-3"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

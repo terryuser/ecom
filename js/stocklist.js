@@ -8,7 +8,6 @@ $(document).ready(function() {
     getAllStock()
 });
 
-
 function mostActive() {
 
     // var apiURL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" + item.symbol + "&apikey=" + apiKey;
@@ -22,6 +21,7 @@ function mostActive() {
     }
 
     $.ajax(stockapi).done(function(response) {
+        console.log("Most active: " + response);
 
         var data = response.mostActiveStock;
 
@@ -41,7 +41,7 @@ function mostActive() {
                 keyChanges = '<div class="key changes negative">' + item.changes + '</div>';
                 keyPercent = '<div class="key changesPercentage negative">' + item.changesPercentage + '</div>';
             }
-   
+
             var listItemHTML = '<div class="listItem" id=' + item.ticker + '>' + keySymbol + keyName + keyPrice + keyChanges + keyPercent + '</div>';
             var addFavBTN = '<div class="addFav" data="' + item.ticker + '">add</div>';
 
@@ -63,6 +63,7 @@ function mostGainer() {
     }
 
     $.ajax(stockapi).done(function(response) {
+        console.log("Most gainer: " + response);
 
         var data = response.mostGainerStock;
 
@@ -88,7 +89,7 @@ function mostGainer() {
             var addFavBTN = '<div class="addFav" data="' + item.ticker + '">add</div>';
 
             $("#mostGainer").append('<a href="../stock?symbol=' + item.ticker + '">' + listItemHTML + '</a>');
-            
+
         });
     });
 }
@@ -106,6 +107,7 @@ function majorIndex() {
     }
 
     $.ajax(stockapi).done(function(response) {
+        console.log("Major index: " + response);
 
         var data = response.majorIndexesList;
 
@@ -118,7 +120,7 @@ function majorIndex() {
             var keyChanges;
 
             if (item.changes > 0) {
-                keyChanges = '<div class="key changes positive">' + item.changes + '</div>';   
+                keyChanges = '<div class="key changes positive">' + item.changes + '</div>';
             } else {
                 keyChanges = '<div class="key changes negative">' + item.changes + '</div>';
             }
@@ -144,11 +146,9 @@ function getAllStock() {
     }
 
     $.ajax(stockapi).done(function(response) {
-        console.log(response);
+        console.log("All stocklist: " + response);
 
         var data = response.symbolsList;
-
-        console.log(data);
 
         $.each(data, function(i, item) {
             //Define stock item format
@@ -158,7 +158,7 @@ function getAllStock() {
 
             var listItemHTML = '<div class="listItem" id=' + item.symbol + '>' + keySymbol + keyName + keyPrice + '</div>';
 
-            $("#allStock").append('<a href="../stock?symbol=' + item.symbol + '">' + listItemHTML +'</a>');
+            $("#allStock").append('<a href="../stock?symbol=' + item.symbol + '">' + listItemHTML + '</a>');
         });
     });
 }
@@ -182,3 +182,12 @@ function getTimeStamp() {
     return todayString;
     // return yesterdayString;
 }
+
+let stateCheck = setInterval(() => {
+    if (document.readyState === 'complete') {
+        clearInterval(stateCheck);
+        console.log("loaded");
+        $('.spinner').hide();
+        $('#allStock').addClass('complete_load');
+    }
+}, 6000);

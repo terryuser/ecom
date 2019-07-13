@@ -1,61 +1,112 @@
 @import '_value';
 @import '_mixin';
-
-
 .stock {
+    .title_section {
+        &:before {
+            background: url(#{$imgPath}laptop-3174729_1920.jpg);
+            filter: brightness(0.9) opacity(1) sepia(0.5) grayscale(0.5);
+            background-position: 50%;
+        }
+        .title {
+            @include fontSize($h16);
+        }
+    }
+    .stock-info-section {
+        padding-top: 15px;
+        padding-bottom: 35px;
+    }
     .stockHeader {
         // @include displayflex;
         // flex-wrap: wrap;
         display: block;
         position: relative;
         padding: 8px $desktop_margin;
-
-        *{
+        * {
             vertical-align: middle;
         }
-
         .btn {
             display: block;
             position: absolute;
             right: $desktop_margin;
             top: 0;
         }
-    
         .add {
             background-color: $Sub_color;
             color: $white;
         }
-
         .brand-block {
             display: inline-block;
         }
-
         .index-block {
             display: inline-block;
             margin-left: 25px;
         }
-
         .stockPrice {
             display: inline-block;
+            line-height: 1;
+            >span {
+                @include fontSize($h20);
+                margin-left: 5px;
+            }
         }
-
         .stockChange {
-            @include fontSize($h16);
+            @include fontSize($h20);
             display: inline-block;
+            margin-left: 10px;
+            >span {
+                @include fontSize($h12);
+                margin-left: 5px;
+            }
         }
     }
-
     .IMG {
         width: 50px;
         height: 50px;
         display: inline-block;
     }
-    
     .stockName {
         @include fontSize($h24);
         color: $black;
         display: inline-block;
+        margin: 0 5px;
     }
-
-    
+    .main-wrapper {
+        @include displayflex();
+        flex-wrap: wrap;
+    }
+    .chart-wrapper {
+        @include flexBasis(65%);
+    }
+    .infoBlock {
+        @include flexBasis(35%);
+    }
+    .des {
+        @include fontSize($h14);
+        padding-left: 10px;
+        .title {
+            @include fontSize($h20);
+            color: $Sub_color;
+            font-weight: bold;
+        }
+        .content {
+            @include fontSize($h14);
+        }
+    }
+    .table-wrapper {
+        padding: 5px 10px;
+    }
+    table {
+        width: 100%;
+        margin-top: 20px;
+        th {
+            text-align: left;
+            padding: 5px;
+            background-color: $grey2;
+            color: $white;
+        }
+        td {
+            padding: 5px;
+            background-color: #ececec;
+        }
+    }
 }

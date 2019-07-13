@@ -1,6 +1,12 @@
 @import '_value';
 @import '_mixin';
 .stock-list {
+    .title_section {
+        &:before {
+            background: url(#{$imgPath}chart-1905225_1920.jpg);
+            filter: brightness(0.5) opacity(1) sepia(0.3) grayscale(0.5);
+        }
+    }
     .stock-info-section {
         @include displayflex();
         padding-top: 15px;
@@ -11,13 +17,8 @@
         order: 1;
         padding-left: 5px;
         .list-wrapper {
-            padding: 5px;
-            padding-top: 0;
+            padding: 0 8px 15px 0;
         }
-    }
-    .all-stock-wrapper {
-        @include flexBasis(70%);
-        order: 0;
     }
     .list-block {
         display: block;
@@ -35,6 +36,7 @@
             }
             &:hover {
                 background-color: #d4d4d4;
+                box-shadow: 0 3px 6px 1px #dedede;
             }
         }
         .pageTitle {
@@ -42,7 +44,11 @@
             font-weight: bold;
             background-color: $grey2;
             color: choose-contrast-color($grey2);
-            padding: 7px 12px;
+            padding: 7px 12px 7px 42px;
+            &:before {
+                left: 12px !important;
+                filter: invert(1);
+            }
         }
         .price,
         .changes,
@@ -57,8 +63,10 @@
         .pageTitle {
             background-color: #fc6202;
             color: $white;
+            @include displayIcon(20px, 20px, "money-graph-with-up-arrow.svg");
         }
         .listItem {
+            background-color: #fff8f0;
             &:hover {
                 background-color: rgba(252, 98, 2, 0.5);
             }
@@ -71,16 +79,28 @@
         .pageTitle {
             background-color: #067e16;
             color: choose-contrast-color(#067e16);
+            @include displayIcon(20px, 20px, "money-bag.svg");
         }
         .listItem {
+            background-color: #ebfceb;
             &:hover {
                 background-color: rgba(6, 126, 22, 0.5);
             }
         }
     }
+    .major-index-wrapper {
+        .pageTitle {
+            @include displayIcon(20px, 20px, "changing-money.svg");
+        }
+    }
     .all-stock-wrapper {
+        @include flexBasis(70%);
+        order: 0;
+        padding-right: 10px;
         .list-block {
             position: relative;
+        }
+        .complete_load {
             &:before {
                 content: "";
                 width: 1px;
@@ -96,12 +116,21 @@
         .pageTitle {
             position: relative;
             z-index: 5;
+            @include displayIcon(20px, 20px, "graph-line-screen.svg");
         }
         #allStock {
             @include displayflex();
             flex-wrap: wrap;
+            position: relative;
+            min-height: 300px;
+            .listItem {
+                border: 0;
+            }
             >a {
                 @include flexBasis(50%);
+                display: block;
+                border-bottom: 1px #dfdfdf solid;
+                background-color: #f5f5f5;
             }
         }
         .listItem {
@@ -121,5 +150,44 @@
         font-weight: bold;
         padding: 10px $desktop_margin;
         text-align: center;
+    }
+    $spinner: $grey;
+    $background: $white;
+    $size: 30px;
+    .spinner {
+        position: absolute;
+        top: calc(50% - #{$size / 2});
+        left: calc(50% - #{$size / 2});
+        width: $size;
+        height: $size;
+        animation: spinner 0.75s linear infinite;
+        span {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        .spinner-inner-1 {
+            background: linear-gradient(to right, rgba($spinner, 0) 0%, rgba($spinner, 0) 50%, $spinner 51%);
+        }
+        .spinner-inner-2 {
+            background: linear-gradient(to top, rgba($background, 0) 0%, $background 100%);
+        }
+        .spinner-inner-3 {
+            $offset: $size * 0.1;
+            top: $offset;
+            left: $offset;
+            width: $size - ($offset * 2);
+            height: $size - ($offset * 2);
+            background: $background;
+        }
+    }
+    @keyframes spinner {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
     }
 }

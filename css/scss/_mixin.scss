@@ -54,11 +54,11 @@
     vertical-align: $pos;
 }
 
-@mixin displayIcon($width, $height, $img, $my_url:$icon_url, $turn:before) {
+@mixin displayIcon($width, $height, $img, $url:$svgPath, $turn:before) {
     position: relative;
     &:#{$turn} {
         content: "";
-        background:url('#{$my_url}#{$img}') no-repeat left top /100% auto;
+        background:url('#{$url}#{$img}') no-repeat left top /100% auto;
         position: absolute;
         display: block;
         width: $width;

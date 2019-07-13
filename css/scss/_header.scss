@@ -12,27 +12,48 @@
     flex-grow: auto;
 }
 
-.nav-menu {
+.member_block {
     flex-grow: 1;
     @include displayflex();
     align-items: center;
+    text-align: right;
+    justify-content: flex-end;
 }
 
 .nav-items {
     display: inline-block;
     margin: 0 5px;
+    position: relative;
     a {
         @include fontSize(1.4rem);
         color: $white;
         text-decoration: none;
+        padding-left: 25px;
+        &:before {
+            filter: invert(1);
+        }
         &:hover {
             color: $Main_color;
         }
+        &:hover:before {
+            filter: invert(1) sepia() saturate(4000%) hue-rotate(310deg);
+        }
+    }
+}
+
+.goStocklist {
+    >a {
+        @include displayIcon(20px, 20px, "statistics-silhouette.svg");
     }
 }
 
 .member_block {
     margin: 0;
+}
+
+.login-action {
+    margin-left: 25px;
+    display: inline-block;
 }
 
 .action {
