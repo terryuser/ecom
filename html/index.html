@@ -5,7 +5,7 @@
     <title>Home</title>
     <meta name="description" content="">
 
-    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,31 +29,64 @@
     <div id="header"></div>
 
     <section class="section slider-wrapper">
-        <img src="./img/bg_stock@2x.jpg" srcset="./img/bg_stock.jpg 767w, ./img/bg_stock@2x.jpg 2000w, ./img/bg_stock@3x.jpg 4200w">
+        <!--video source https://www.youtube.com/watch?v=n0tFhDhubr0&list=PLKTlP51GPmJz_ej9d_4OUAh65PMS8jn2n&index=18-->
+        <video loop autoplay>
+            <source src="../video/stockexchange.mp4" type="video/mp4">
+            <source src="movie.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+        </video>
+        <div class="slider-title">
+            <img src="../img/svg/ecom_brand.svg" alt="ecom">
+            <p>Your stock watch man</p>
+            <a href="./stocklist">
+                <div class='action stocklist'><span>WATCH NOW</span></div>
+            </a>
+        </div>
     </section>
 
     <section class="section promote-wrapper">
-        <div class="section title">Get the stock</div>
+        <div class="section title"><strong>Get</strong> stock info</div>
         <div class="goods-list">
-            <div class="fast">Fast</div>
-            <div class="easily">Easily</div>
-            <div class="simple">Simple</div>
+            <div class="icon-block fast">
+                <div class="icon"><img src="../img/svg/chronometer.svg" alt="ecom"></div>
+                <p>Fast</p>
+            </div>
+            <div class="icon-block easily">
+                <div class="icon"><img src="../img/svg/tick-inside-circle.svg" alt="ecom"></div>
+                <p>Easily</p>
+            </div>
+            <div class="icon-block everytime">
+                <div class="icon"><img src="../img/svg/24-hours-clock-symbol.svg" alt="ecom"></div>
+                <p>Everytime</p>
+            </div>
         </div>
     </section>
 
     <section class="section news-wrapper">
         <div class="news-board" id="news_board">
-            <div class="updateStamp"></div>
+            <div class="text-wrapper">
+                <div class="text">
+                    Daily update
+                    <span>stock summary</span>
+                    <a href="./register">
+                        <div class='action register'><span>Check Now!</span></div>
+                    </a>
+                </div>
+            </div>
             <div class="list-wrapper most-active-wrapper">
                 <div class="list-block">
-                    <div class="pageTitle">Most Active<span class="updateStamp most-active"></span></div>
+                    <div class="title_wrapper">
+                        <div class="pageTitle">Most Active</div>
+                    </div>
                     <div class="list" id="mostActive"></div>
                 </div>
             </div>
-        
+
             <div class="list-wrapper most-gainer-wrapper">
                 <div class="list-block">
-                    <div class="pageTitle">Most Gainer</div>
+                    <div class="title_wrapper">
+                        <div class="pageTitle">Most Gainer</div>
+                    </div>
                     <div class="list" id="mostGainer"></div>
                 </div>
             </div>
@@ -61,8 +94,12 @@
     </section>
 
     <section class="section callaction-wrapper">
-        <div>Check your stock in 24 hours</div>
-        <div><a href="/register">Sign up</a></div>
+        <div>
+            <p>Check your stock in 24 hours</p>
+            <a href="./register">
+                <div class='action register'><span>Right Now!</span></div>
+            </a>
+        </div>
     </section>
 
     <div id="footer"></div>

@@ -10,6 +10,10 @@
 
 .brand {
     flex-grow: auto;
+    .nav-brand img {
+        width: auto;
+        height: 40px;
+    }
 }
 
 .member_block {

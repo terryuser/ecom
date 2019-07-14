@@ -1,0 +1,32 @@
+@-webkit-keyframes move_updown {
+    0% {
+        top: 0;
+    }
+    33% {
+        top: -5px;
+    }
+    66% {
+        top: 0
+    }
+    100% {
+        top: -5px;
+    }
+}
+
+
+/* Standard syntax */
+
+@keyframes move_updown {
+    0% {
+        top: 0;
+    }
+    33% {
+        top: -5px;
+    }
+    66% {
+        top: 0
+    }
+    100% {
+        top: -5px;
+    }
+}

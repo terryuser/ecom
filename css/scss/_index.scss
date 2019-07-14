@@ -1,18 +1,249 @@
 @import '_value';
 @import '_mixin';
-
-.slider-wrapper {
-    max-height: 550px;
-    overflow: hidden;
-
-    >picture {
-        width: 100%;
-        height: 100%;
+@import '_animation';
+.index {
+    .slider-wrapper {
+        height: 650px;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        @include displayflex();
+        align-items: center;
+        justify-content: center;
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: 0.6;
+            z-index: 2;
+        }
+        >picture {
+            width: 100%;
+            height: 100%;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        video {
+            width: 100%;
+            object-fit: cover;
+            position: absolute;
+            z-index: 1;
+        }
+        .slider-title {
+            z-index: 3;
+            text-align: center;
+            .title {
+                @include fontSize(6rem);
+                color: $Main_color;
+                font-weight: bold;
+            }
+            p {
+                @include fontSize($h16);
+                color: $white;
+                margin: 5px 0;
+                text-align: center;
+            }
+            .action.stocklist {
+                margin-top: 10px;
+                padding: 15px 25px;
+                background-color: none;
+                border: 1px $Main_color solid;
+                @include transition(0.4s);
+                @include border-radius(8px);
+                span {
+                    color: $Main_color;
+                }
+                &:hover {
+                    transform: scale(1.1);
+                    background-color: $Main_color;
+                    span {
+                        color: $white;
+                    }
+                }
+            }
+        }
     }
-
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    .promote-wrapper {
+        background-color: #fff;
+        padding: 40px 15px;
+        text-align: center;
+        .section.title {
+            color: $grey;
+            @include fontSize(4rem);
+            strong {
+                color: $black;
+            }
+        }
+        .goods-list {
+            @include displayflex();
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+        }
+        .icon-block {
+            max-width: 250px;
+            .icon {
+                margin: 0 20px;
+                padding: 0 40px;
+                >img {
+                    filter: invert(1) sepia() saturate(4000%) hue-rotate(310deg);
+                }
+            }
+            p {
+                margin: 0;
+                @include fontSize($h20);
+                color: $Main_color;
+            }
+        }
+    }
+    .news-wrapper {
+        background: url(#{$imgPath}section2.jpg);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        padding: 40px $desktop_margin;
+        .news-board {
+            @include displayflex();
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            .text-wrapper {
+                @include flexBasis(36%);
+                padding: 20px 10px;
+                @include displayflex();
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                >div,
+                >a {
+                    @include flexBasis(100%);
+                }
+                .text {
+                    @include fontSize(3.4rem);
+                    color: $white;
+                    text-align: center;
+                    span {
+                        display: block;
+                    }
+                    .register {
+                        @include fontSize($h20);
+                        margin-top: 15px;
+                        padding: 15px 50px;
+                        @include transition(0.4s);
+                    }
+                }
+            }
+            .list-wrapper {
+                @include flexBasis(32%);
+                padding: 10px 15px;
+            }
+            .list-block {
+                background-color: $white;
+                @include border-radius(15px);
+                overflow: hidden;
+                box-shadow: 9px 9px 3px 0px rgba(0, 0, 0, 0.5);
+            }
+            .title_wrapper {
+                display: block;
+                padding: 12px 8px;
+                text-align: center;
+            }
+            .pageTitle {
+                @include fontSize($h24);
+                color: $white;
+                text-align: center;
+                display: inline-block;
+                &:before {
+                    display: inline-block;
+                    position: relative;
+                    filter: invert(1);
+                    margin-right: 10px;
+                }
+            }
+            .listItem {
+                padding: 8px 12px;
+                background-color: $white;
+                border-bottom: 1px #d8d8d8 solid;
+                .key {
+                    @include fontSize($h13);
+                    padding: 0 5px;
+                }
+                .symbol {
+                    @include flexBasis(60px);
+                }
+                .name {
+                    @include flexBasis(250px);
+                }
+                .price {
+                    @include flexBasis(50px);
+                }
+                .changes {
+                    @include flexBasis(30px);
+                }
+                .changesPercentage {
+                    @include flexBasis(52px);
+                }
+            }
+        }
+    }
+    .most-active-wrapper {
+        .title_wrapper {
+            background-color: $Main_color;
+        }
+        .pageTitle {
+            @include displayIcon(20px, 20px, "money-graph-with-up-arrow.svg");
+        }
+        .listItem {
+            &:hover {
+                background-color: rgba(252, 98, 2, 0.3);
+            }
+        }
+    }
+    .most-gainer-wrapper {
+        .title_wrapper {
+            background-color: $positive;
+        }
+        .pageTitle {
+            @include displayIcon(20px, 20px, "money-bag.svg");
+        }
+        .listItem {
+            &:hover {
+                background-color: rgba(6, 126, 22, 0.3);
+            }
+        }
+    }
+    .callaction-wrapper {
+        height: 350px;
+        background: url(#{$imgPath}laptop-3174729_1920.jpg) no-repeat 50% 23%;
+        @include displayflex();
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0 20%;
+        >div {
+            text-align: center;
+        }
+        p,
+        >a {
+            margin: 0;
+        }
+        p {
+            @include fontSize(2.8rem);
+            color: $white;
+            text-align: center;
+        }
+        .action.register {
+            @include fontSize($h20);
+            text-align: center;
+            margin-top: 10px;
+            padding: 15px 50px;
+            @include transition(0.4s);
+            background-color: $Sub_color;
+        }
     }
 }
