@@ -4,16 +4,17 @@
 .registPage {
     .form-wrapper {
         padding: 40px 15px;
-        height: 800px;
+        height: calc(100vh - 100px);
         background: url(#{$imgPath}section2.jpg);
-        background-size: 100%;
+        background-size: cover;
         background-repeat: no-repeat;
+        @include displayflex();
+        align-items: center;
+        justify-content: center;
     }
-    
     .reg-form-wrapper {
         padding: 25px 0;
     }
-
     .reg-form {
         width: 100%;
         max-width: 450px;
@@ -23,22 +24,20 @@
         .input-wrapper {
             margin: 15px 0;
             vertical-align: middle;
-
             label {
                 display: block;
-                @include fontSize($h16);
+                @include fontSize($h18);
                 color: $black;
                 font-weight: bold;
             }
-
             input {
                 display: block;
                 width: 100%;
                 background: none;
-                padding: 5px;
+                padding: 5px 0 2px;
                 border: 0;
                 border-bottom: 1px solid $grey;
-
+                @include fontSize($h14);
                 &:focus {
                     outline: none;
                 }
@@ -47,7 +46,7 @@
         .checkbox {
             display: block;
             vertical-align: middle;
-            #agreement{
+            #agreement {
                 display: inline-block;
                 width: 20px;
                 height: 20px;
@@ -55,11 +54,31 @@
                 vertical-align: middle;
                 background: none;
                 border: 1px solid $Main_color;
+                margin-right: 5px;
             }
             p {
                 display: inline-block;
                 margin: 0;
                 vertical-align: middle;
+            }
+        }
+        .form-action {
+            text-align: right;
+            margin-top: 15px;
+        }
+        #register-submit {
+            display: inline-block;
+            padding: 10px 15px;
+            background: none;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            color: $positive;
+            border: 1px $positive solid;
+            @include border-radius(8px);
+            &:hover {
+                background: $positive;
+                color: $white;
             }
         }
     }

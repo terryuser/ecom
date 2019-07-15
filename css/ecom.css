@@ -349,6 +349,10 @@ img {
 .positive {
   color: #22ab55 !important; }
 
+.alertMsg {
+  color: #cc3300;
+  padding-top: 5px; }
+
 #footer {
   background-color: #212121;
   padding: 10px;
@@ -987,10 +991,15 @@ img {
     top: -5px; } }
 .registPage .form-wrapper {
   padding: 40px 15px;
-  height: 800px;
+  height: calc(100vh - 100px);
   background: url(../img/section2.jpg);
-  background-size: 100%;
-  background-repeat: no-repeat; }
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 .registPage .reg-form-wrapper {
   padding: 25px 0; }
 .registPage .reg-form {
@@ -1004,18 +1013,21 @@ img {
     vertical-align: middle; }
     .registPage .reg-form .input-wrapper label {
       display: block;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-family: "Roboto", sans-serif;
-      line-height: 1.8rem;
+      line-height: 2rem;
       color: #212121;
       font-weight: bold; }
     .registPage .reg-form .input-wrapper input {
       display: block;
       width: 100%;
       background: none;
-      padding: 5px;
+      padding: 5px 0 2px;
       border: 0;
-      border-bottom: 1px solid #646464; }
+      border-bottom: 1px solid #646464;
+      font-size: 1.4rem;
+      font-family: "Roboto", sans-serif;
+      line-height: 1.6rem; }
       .registPage .reg-form .input-wrapper input:focus {
         outline: none; }
   .registPage .reg-form .checkbox {
@@ -1028,10 +1040,30 @@ img {
       margin: 0;
       vertical-align: middle;
       background: none;
-      border: 1px solid #f19d1e; }
+      border: 1px solid #f19d1e;
+      margin-right: 5px; }
     .registPage .reg-form .checkbox p {
       display: inline-block;
       margin: 0;
       vertical-align: middle; }
+  .registPage .reg-form .form-action {
+    text-align: right;
+    margin-top: 15px; }
+  .registPage .reg-form #register-submit {
+    display: inline-block;
+    padding: 10px 15px;
+    background: none;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    color: #22ab55;
+    border: 1px #22ab55 solid;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    border-radius: 8px; }
+    .registPage .reg-form #register-submit:hover {
+      background: #22ab55;
+      color: #fff; }
 
 /*# sourceMappingURL=ecom.css.map */

@@ -96,6 +96,11 @@ img {
     color: $positive !important;
 }
 
+.alertMsg {
+    color: $Warning;
+    padding-top: 5px;
+}
+
 #footer {
     background-color: $black;
     padding: 10px;
