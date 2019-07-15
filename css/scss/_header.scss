@@ -88,6 +88,7 @@
     display: none;
     position: absolute;
     right: 0;
+    z-index: 99;
     @include border-radius(5px);
     background-color: #494949;
     * {
@@ -113,6 +114,7 @@
     }
     #login-action {
         appearance: none;
+        border: 0;
         @include border-radius(5px);
         @include btnSolid(#27ad1b, $white);
         margin: 10px 0 0 auto;

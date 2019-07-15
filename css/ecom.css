@@ -170,6 +170,7 @@
   display: none;
   position: absolute;
   right: 0;
+  z-index: 99;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -198,6 +199,7 @@
       border-bottom: 2px solid #fff; }
   .login-panel #login-action {
     appearance: none;
+    border: 0;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
@@ -963,5 +965,73 @@ img {
   .stock table td {
     padding: 5px;
     background-color: #ececec; }
+
+@-webkit-keyframes move_updown {
+  0% {
+    top: 0; }
+  33% {
+    top: -5px; }
+  66% {
+    top: 0; }
+  100% {
+    top: -5px; } }
+/* Standard syntax */
+@keyframes move_updown {
+  0% {
+    top: 0; }
+  33% {
+    top: -5px; }
+  66% {
+    top: 0; }
+  100% {
+    top: -5px; } }
+.registPage .form-wrapper {
+  padding: 40px 15px;
+  height: 800px;
+  background: url(../img/section2.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat; }
+.registPage .reg-form-wrapper {
+  padding: 25px 0; }
+.registPage .reg-form {
+  width: 100%;
+  max-width: 450px;
+  padding: 40px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.85); }
+  .registPage .reg-form .input-wrapper {
+    margin: 15px 0;
+    vertical-align: middle; }
+    .registPage .reg-form .input-wrapper label {
+      display: block;
+      font-size: 1.6rem;
+      font-family: "Roboto", sans-serif;
+      line-height: 1.8rem;
+      color: #212121;
+      font-weight: bold; }
+    .registPage .reg-form .input-wrapper input {
+      display: block;
+      width: 100%;
+      background: none;
+      padding: 5px;
+      border: 0;
+      border-bottom: 1px solid #646464; }
+      .registPage .reg-form .input-wrapper input:focus {
+        outline: none; }
+  .registPage .reg-form .checkbox {
+    display: block;
+    vertical-align: middle; }
+    .registPage .reg-form .checkbox #agreement {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin: 0;
+      vertical-align: middle;
+      background: none;
+      border: 1px solid #f19d1e; }
+    .registPage .reg-form .checkbox p {
+      display: inline-block;
+      margin: 0;
+      vertical-align: middle; }
 
 /*# sourceMappingURL=ecom.css.map */

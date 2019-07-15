@@ -1,0 +1,66 @@
+@import '_value';
+@import '_mixin';
+@import '_animation';
+.registPage {
+    .form-wrapper {
+        padding: 40px 15px;
+        height: 800px;
+        background: url(#{$imgPath}section2.jpg);
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    
+    .reg-form-wrapper {
+        padding: 25px 0;
+    }
+
+    .reg-form {
+        width: 100%;
+        max-width: 450px;
+        padding: 40px;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.85);
+        .input-wrapper {
+            margin: 15px 0;
+            vertical-align: middle;
+
+            label {
+                display: block;
+                @include fontSize($h16);
+                color: $black;
+                font-weight: bold;
+            }
+
+            input {
+                display: block;
+                width: 100%;
+                background: none;
+                padding: 5px;
+                border: 0;
+                border-bottom: 1px solid $grey;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+        .checkbox {
+            display: block;
+            vertical-align: middle;
+            #agreement{
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                margin: 0;
+                vertical-align: middle;
+                background: none;
+                border: 1px solid $Main_color;
+            }
+            p {
+                display: inline-block;
+                margin: 0;
+                vertical-align: middle;
+            }
+        }
+    }
+}
