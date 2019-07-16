@@ -1,5 +1,6 @@
 @import '_value';
 @import '_mixin';
+@import '_animation';
 .stock {
     .title_section {
         &:before {
@@ -27,12 +28,40 @@
         .btn {
             display: block;
             position: absolute;
+            padding: 10px 20px;
             right: $desktop_margin;
             top: 0;
+            p {
+                margin: 0;
+                position: relative;
+                &:before {
+                    content: '';
+                    display: inline-block;
+                    position: relative;
+                    margin-right: 5px;
+                    width: 20px;
+                    height: 20px;
+                    background-size: auto;
+                    background-repeat: no-repeat;
+                    background-position: top;
+                    vertical-align: middle;
+                    filter: invert(1);
+                }
+            }
         }
         .add {
-            background-color: $Sub_color;
+            background-color: $Thr_color;
             color: $white;
+            & p:before {
+                background: url(#{$svgPath}addWatchlist.svg);
+            }
+        }
+        .remove {
+            background-color: $grey2;
+            color: $white;
+            & p:before {
+                background: url(#{$svgPath}broken-heart.svg);
+            }
         }
         .brand-block {
             display: inline-block;

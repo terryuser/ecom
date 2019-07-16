@@ -1,0 +1,39 @@
+@import '_value';
+@import '_mixin';
+@import '_animation';
+.success {
+    .content-section {
+        padding: 45px $desktop_margin;
+        height: calc(100vh - 100px);
+        background: url(#{$imgPath}section2.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        @include displayflex();
+        align-items: center;
+        justify-content: center;
+    }
+    .Reg-success {
+        width: 100%;
+        max-width: 600px;
+        text-align: center;
+        padding: 25px;
+        border: 3px $Main_color solid;
+        background-color: rgba(255, 255, 255, 0.85);
+        .title {
+            @include fontSize(3.6rem);
+            color: $black;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .paragraph {
+            @include fontSize($h14);
+            color: $grey2;
+        }
+        a {
+            color: $Sub_color;
+        }
+        p {
+            margin: 3px 0;
+        }
+    }
+}

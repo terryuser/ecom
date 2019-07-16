@@ -1,5 +1,6 @@
 @import '_value';
 @import '_mixin';
+@import '_animation';
 html {
     font-family: $family;
     font-size: 10px;
@@ -13,6 +14,11 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden !important;
 }
 
 img {

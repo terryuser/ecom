@@ -1,5 +1,6 @@
 @import '_value';
 @import '_mixin';
+@import '_animation';
 //Header
 .nav-bar {
     @include displayflex();
@@ -26,13 +27,12 @@
 
 .nav-items {
     display: inline-block;
-    margin: 0 5px;
+    margin: 0 10px;
     position: relative;
     a {
         @include fontSize(1.4rem);
         color: $white;
         text-decoration: none;
-        padding-left: 25px;
         &:before {
             filter: invert(1);
         }
@@ -47,7 +47,15 @@
 
 .goStocklist {
     >a {
-        @include displayIcon(20px, 20px, "statistics-silhouette.svg");
+        padding-left: 25px;
+        @include displayIcon(20px, 20px, "header_stock.svg");
+    }
+}
+
+.goWatchlist {
+    >a {
+        padding-left: 20px;
+        @include displayIcon(20px, 20px, "header_watchlist.svg");
     }
 }
 
@@ -62,7 +70,7 @@
 
 .action {
     @include fontSize(1.4rem);
-    padding: 5px 15px;
+    padding: 5px 15px !important;
     display: inline-block;
 }
 
@@ -70,16 +78,19 @@
     @include btnSolid($Sub_color, $white);
     @include border-radius(8px);
     margin-right: 5px;
+    text-transform: uppercase;
 }
 
 .register {
     @include btnSolid($Main_color, $white);
     @include border-radius(8px);
+    text-transform: uppercase;
 }
 
 .logout {
     @include btnSolid($Thr_color, $white);
     @include border-radius(8px);
+    text-transform: uppercase;
 }
 
 .login-panel {

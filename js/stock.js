@@ -162,10 +162,10 @@ function checkWatchlist() {
             console.log(respon.message);
             if (respon.message == "exist") {
                 InWatchList = true;
-                $('#WatchList').removeClass("add").addClass("remove").html("Remove");
+                $('#WatchList').removeClass("add").addClass("remove").html("<p>Remove</p>");
             } else {
                 InWatchList = false;
-                $('#WatchList').addClass("add").removeClass("remove").html("Add");
+                $('#WatchList').addClass("add").removeClass("remove").html("<p>Add</p>");
             }
         }
     });
@@ -186,7 +186,7 @@ function addWatchList() {
                     if (data.message == "added") {
                         console.log("Add Success");
                         InWatchList = true;
-                        addBtn.addClass("remove").removeClass("add").html("Remove");
+                        addBtn.addClass("remove").removeClass("add").html("<p>Remove</p>");
                     }
                 },
                 error: function(xhr, status, error) {
@@ -203,7 +203,7 @@ function addWatchList() {
                     if (data.message == "deleted") {
                         console.log("Delete Success");
                         InWatchList = false;
-                        addBtn.removeClass("remove").addClass("add").html("Add");
+                        addBtn.removeClass("remove").addClass("add").html("<p>Add</p>");
                     }
                 },
                 error: function(xhr, status, error) {

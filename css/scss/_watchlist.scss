@@ -1,0 +1,153 @@
+@import '_value';
+@import '_mixin';
+@import '_animation';
+.watchlist {
+    .title_section {
+        &:before {
+            background: url(#{$imgPath}laptop-3174729_1920.jpg);
+            filter: brightness(0.5) opacity(1) sepia(0.3) grayscale(0.5);
+            background-position: 50%;
+        }
+    }
+    .profile {
+        padding: 25px $desktop_margin;
+    }
+    .profile-block {
+        width: 100%;
+        max-width: 1000px;
+        @include displayflex();
+        margin: 0 auto;
+        img {
+            @include flexBasis(25%);
+            max-height: 200px;
+        }
+        .info-block {
+            @include flexBasis(75%);
+            >div {
+                @include flexBasis(100%);
+            }
+            #member-name {
+                @include fontSize($h24);
+                font-weight: bold;
+                color: $Main_color;
+            }
+            .input-wrapper {
+                line-height: 1;
+                margin: 10px 0;
+                text-align: center;
+                label {
+                    display: block;
+                    color: $black;
+                    font-weight: bold;
+                    vertical-align: middle;
+                    text-align: left;
+                }
+                input {
+                    display: block;
+                    width: 100%;
+                    padding: 5px 0;
+                    margin: 0;
+                    border: 0;
+                    vertical-align: middle;
+                    border-bottom: 1px $grey2 solid;
+                    text-align: left;
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+            .action {
+                display: block;
+                padding: 0 !important;
+                text-align: right;
+                .btn {
+                    padding: 10px 15px;
+                    display: inline-block;
+                    @include transition(0.4s);
+                }
+                .update {
+                    background-color: $Sub_color;
+                }
+                .cancel {
+                    background: none;
+                    border: 1px $grey2 solid;
+                    color: $grey2;
+                    &:hover {
+                        background-color: $grey2;
+                        color: $white;
+                    }
+                }
+            }
+            .delete {
+                padding: 0 !important;
+                text-align: center;
+                margin-top: 25px;
+                @include transition(0.4s);
+                #deleteAC {
+                    width: 100%;
+                    background-color: $Thr_color;
+                    text-transform: uppercase;
+                    padding: 10px 0;
+                    @include transition(0.4s);
+                }
+            }
+        }
+    }
+    .watchlist {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 25px $desktop_margin;
+        #watchlist-block {
+            .listItem {
+                @include displayflex();
+                align-items: center;
+                position: relative;
+                padding: 5px;
+                margin: 5px 0;
+                background-color: #eeeeee;
+                &:hover {
+                    background-color: #dddddd;
+                }
+                .symbol {
+                    @include flexBasis(10%);
+                }
+                .name {
+                    @include flexBasis(25%);
+                }
+                .price {
+                    @include flexBasis(15%);
+                }
+                .change {
+                    @include flexBasis(15%);
+                }
+                .changepercentage {
+                    @include flexBasis(20%);
+                }
+                .action-wrapper {
+                    text-align: right;
+                    @include flexBasis(15%);
+                }
+                .delete {
+                    position: relative;
+                    background-color: $Warning;
+                    @include transition(0.4s);
+                    @include border-radius(6px);
+                    color: $white;
+                    cursor: pointer;
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+            .title {
+                @include fontSize($h20);
+                color: $Main_color;
+                font-weight: bold;
+                padding-bottom: 5px;
+                margin-bottom: 10px;
+                border-bottom: 1.5px $Main_color solid;
+            }
+        }
+    }
+}

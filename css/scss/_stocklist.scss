@@ -1,5 +1,6 @@
 @import '_value';
 @import '_mixin';
+@import '_animation';
 .stock-list {
     .title_section {
         &:before {
@@ -23,7 +24,8 @@
     .list-block {
         display: block;
         border: 1px solid $grey;
-        @include border-radius(15px);
+        @include border-radius(10px);
+        overflow: hidden;
         .list {
             padding: 0;
         }
