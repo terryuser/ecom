@@ -136,7 +136,7 @@ function updateInfo() {
                 $('#update').addClass('hidden');
                 $('#member-email').addClass('green').next('.alertMsg').html('Email updated!');
             } else if (data.message == "emailExist") {
-                $('#member-email').removeClass('green').next('.alertMsg').html('Email existed!');
+                $('#member-email').removeClass('green').next('.alertMsg').html('Email existed! Please pick another email.');
             } else {
                 $('#member-email').removeClass('green').next('.alertMsg').html('Unexperted error');
             }
