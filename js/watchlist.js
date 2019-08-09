@@ -134,11 +134,11 @@ function updateInfo() {
             console.log(data.message);
             if (data.message == "updated") {
                 $('#update').addClass('hidden');
-                $('#member-email').addClass('green').next('.alertMsg').html('Email updated!');
+                $('#member-email').next('.alertMsg').addClass('green').html('Email updated!');
             } else if (data.message == "emailExist") {
-                $('#member-email').removeClass('green').next('.alertMsg').html('Email existed! Please pick another email.');
+                $('#member-email').next('.alertMsg').removeClass('green').html('Email existed! Please pick another email.');
             } else {
-                $('#member-email').removeClass('green').next('.alertMsg').html('Unexperted error');
+                $('#member-email').next('.alertMsg').removeClass('green').html('Unexperted error');
             }
         },
         error: function(xhr, status, error) {
