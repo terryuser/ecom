@@ -107,9 +107,12 @@ function getStock() {
         var ctx = $('#chart');
         var date = new Array;
         var closeVal = new Array;
-        var showDays = 15;
+        var dataLength = response.historical.length;
+        var showDays = 20;
 
-        for (i = 0; i < showDays; i++) {
+        console.log(dataLength);
+
+        for (i = dataLength - showDays; i < dataLength; i++) {
             date.push(response.historical[i].date);
             closeVal.push(response.historical[i].close)
         }
