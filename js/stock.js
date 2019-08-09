@@ -74,7 +74,7 @@ function getStock() {
 
         $('.IMG').html('<img src="https://financialmodelingprep.com/stocks/' + symbol.toLowerCase() + '.png" alt="' + Name + '">');
 
-        $('.stockName').html(Name + "(" + symbol + ")<div>" + "</div>");
+        $('.stockName').html(Name + "(" + symbol + ")");
         $('.stockPrice').html('Price:<span>' + Price + '</span>');
         $('.stockChange').html(Change + '<span>' + ChangesPercentage + '</span>');
 

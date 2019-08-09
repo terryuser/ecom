@@ -12,11 +12,18 @@
         @include displayflex();
         padding-top: 15px;
         padding-bottom: 15px;
+        @include mediaWidth($ipad) {
+            flex-wrap: wrap;
+        }
     }
     .stock-list-section {
         @include flexBasis(30%);
         order: 1;
         padding-left: 5px;
+        @include mediaWidth($ipad) {
+            @include flexBasis(100%);
+            order: 0;
+        }
         .list-wrapper {
             padding: 0 8px 15px 0;
         }
@@ -100,6 +107,10 @@
         @include flexBasis(70%);
         order: 0;
         padding-right: 10px;
+        @include mediaWidth($ipad) {
+            @include flexBasis(100%);
+            order: 1;
+        }
         .list-block {
             position: relative;
         }
@@ -114,6 +125,9 @@
                 left: 50%;
                 top: 0;
                 z-index: 3;
+                @include mediaWidth($ipad) {
+                    display: none;
+                }
             }
         }
         .pageTitle {
@@ -134,6 +148,9 @@
                 display: block;
                 border-bottom: 1px #dfdfdf solid;
                 background-color: #f5f5f5;
+                @include mediaWidth($ipad) {
+                    @include flexBasis(100%);
+                }
             }
         }
         .listItem {

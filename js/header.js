@@ -1,6 +1,9 @@
+var check_navOpen = false;
+
 $(document).ready(function() {
     checkLogin();
     scrollTop();
+    navMenu();
 });
 
 
@@ -29,5 +32,19 @@ function scrollTop() {
     btn.on('click', function(e) {
         e.preventDefault();
         $('html, body').animate({ scrollTop: 0 }, '300');
+    });
+}
+
+function navMenu() {
+    $("#nav_btn").click(function() {
+        if (check_navOpen == false) {
+            $("#member_block").addClass('show_nav');
+            console.log("open Nav");
+            check_navOpen = true;
+        } else {
+            $("#member_block").removeClass('show_nav');
+            console.log("close Nav");
+            check_navOpen = false;
+        }
     });
 }

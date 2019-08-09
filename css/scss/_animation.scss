@@ -30,3 +30,31 @@
         top: -5px;
     }
 }
+
+
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes open {
+    0% {
+        height: 0;
+        overflow: hidden;
+    }
+    100% {
+        height: auto;
+        overflow: visible;
+    }
+}
+
+
+/* Standard syntax */
+
+@keyframes open {
+    0% {
+        height: 0;
+        overflow: hidden;
+    }
+    100% {
+        height: auto;
+        overflow: visible;
+    }
+}

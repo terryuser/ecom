@@ -17,12 +17,21 @@
         max-width: 1000px;
         @include displayflex();
         margin: 0 auto;
+        @include mediaWidth($ipad) {
+            flex-wrap: wrap;
+        }
         img {
             @include flexBasis(25%);
             max-height: 200px;
+            @include mediaWidth($ipad) {
+                @include flexBasis(100%);
+            }
         }
         .info-block {
             @include flexBasis(75%);
+            @include mediaWidth($ipad) {
+                @include flexBasis(100%);
+            }
             >div {
                 @include flexBasis(100%);
             }
@@ -39,7 +48,6 @@
                     display: block;
                     color: $black;
                     font-weight: bold;
-                    vertical-align: middle;
                     text-align: left;
                 }
                 input {
@@ -48,7 +56,6 @@
                     padding: 5px 0;
                     margin: 0;
                     border: 0;
-                    vertical-align: middle;
                     border-bottom: 1px $grey2 solid;
                     text-align: left;
                     &:focus {
@@ -98,6 +105,9 @@
         max-width: 1000px;
         margin: 0 auto;
         padding: 25px $desktop_margin;
+        @include mediaWidth($ipad) {
+            width: auto;
+        }
         #watchlist-block {
             .listItem {
                 @include displayflex();
@@ -106,27 +116,49 @@
                 padding: 5px;
                 margin: 5px 0;
                 background-color: #eeeeee;
+                @include mediaWidth($ipad) {
+                    padding: 10px;
+                    flex-wrap: wrap;
+                }
                 &:hover {
                     background-color: #dddddd;
                 }
                 .symbol {
                     @include flexBasis(10%);
+                    @include mediaWidth($ipad) {
+                        @include flexBasis(25%);
+                    }
                 }
                 .name {
                     @include flexBasis(25%);
+                    @include mediaWidth($ipad) {
+                        @include flexBasis(75%);
+                    }
                 }
                 .price {
                     @include flexBasis(15%);
+                    @include mediaWidth($ipad) {
+                        @include flexBasis(25%);
+                    }
                 }
                 .change {
                     @include flexBasis(15%);
+                    @include mediaWidth($ipad) {
+                        @include flexBasis(25%);
+                    }
                 }
                 .changepercentage {
                     @include flexBasis(20%);
+                    @include mediaWidth($ipad) {
+                        @include flexBasis(25%);
+                    }
                 }
                 .action-wrapper {
                     text-align: right;
                     @include flexBasis(15%);
+                    @include mediaWidth($ipad) {
+                        @include flexBasis(25%);
+                    }
                 }
                 .delete {
                     position: relative;

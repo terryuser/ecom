@@ -10,6 +10,10 @@
         @include displayflex();
         align-items: center;
         justify-content: center;
+        @include mediaWidth($ipad) {
+            padding: $mobile_margin 20px;
+            height: 100vh;
+        }
         &:before {
             content: "";
             position: absolute;
@@ -35,6 +39,9 @@
             object-fit: cover;
             position: absolute;
             z-index: 1;
+            @include mediaWidth($ipad) {
+                height: 100%;
+            }
         }
         .slider-title {
             z-index: 3;
@@ -92,6 +99,10 @@
             .icon {
                 margin: 0 20px;
                 padding: 0 40px;
+                @include mediaWidth($ipad) {
+                    margin: 0 5px;
+                    padding: 0 10px;
+                }
                 >img {
                     filter: invert(1) sepia() saturate(4000%) hue-rotate(310deg);
                 }
@@ -113,6 +124,9 @@
             width: 100%;
             max-width: 1400px;
             margin: 0 auto;
+            @include mediaWidth($ipad) {
+                flex-wrap: wrap;
+            }
             .text-wrapper {
                 @include flexBasis(36%);
                 padding: 20px 10px;
@@ -120,6 +134,9 @@
                 flex-wrap: wrap;
                 justify-content: center;
                 align-items: center;
+                @include mediaWidth($ipad) {
+                    @include flexBasis(100%);
+                }
                 >div,
                 >a {
                     @include flexBasis(100%);
@@ -142,6 +159,10 @@
             .list-wrapper {
                 @include flexBasis(32%);
                 padding: 10px 15px;
+                @include mediaWidth($ipad) {
+                    @include flexBasis(100%);
+                    padding: 10px 0;
+                }
             }
             .list-block {
                 background-color: $white;

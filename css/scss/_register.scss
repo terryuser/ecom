@@ -11,6 +11,9 @@
         @include displayflex();
         align-items: center;
         justify-content: center;
+        @include mediaWidth($ipad) {
+            padding: 20px $mobile_margin;
+        }
     }
     .reg-form-wrapper {
         padding: 25px 0;
@@ -21,6 +24,10 @@
         padding: 40px;
         margin: 0 auto;
         background-color: rgba(255, 255, 255, 0.85);
+        @include mediaWidth($ipad) {
+            padding: $mobile_margin;
+            width: auto;
+        }
         .input-wrapper {
             margin: 15px 0;
             vertical-align: middle;
@@ -46,6 +53,9 @@
         .checkbox {
             display: block;
             vertical-align: middle;
+            @include mediaWidth($ipad) {
+                @include displayflex();
+            }
             #agreement {
                 display: inline-block;
                 width: 20px;

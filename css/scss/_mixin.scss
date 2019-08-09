@@ -237,29 +237,6 @@ $line:'top') {
     map-get($color, saturate));
 }
 
-@mixin ws-filter($brightness,
-$sepia,
-$hue-rotate,
-$saturate) {
-    filter: brightness($brightness) sepia($sepia) hue-rotate($hue-rotate) saturate($saturate);
-    -webkit-filter: brightness($brightness) sepia($sepia) hue-rotate($hue-rotate) saturate($saturate);
-    -moz-filter: brightness($brightness) sepia($sepia) hue-rotate($hue-rotate) saturate($saturate);
-}
-
-@mixin ws-display($select:true,
-$important:'') {
-    @if $select==true {
-        display:none#{$important};
-        visibility: hidden#{$important};
-        opacity: 0#{$important};
-    }
-    @else {
-        display:inherit#{$important};
-        visibility:inherit#{$important};
-        opacity: 1#{$important};
-    }
-}
-
 @mixin multiLineEllipsis($lineHeight: 1.2em,
 $lineCount: 1,
 $bgColor: #ffffff) {

@@ -14,6 +14,9 @@
     .nav-brand img {
         width: auto;
         height: 40px;
+        @include mediaWidth($ipad) {
+            height: 25px;
+        }
     }
 }
 
@@ -23,6 +26,53 @@
     align-items: center;
     text-align: right;
     justify-content: flex-end;
+    @include mediaWidth($ipad) {
+        height: 0;
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 55px;
+        width: 100%;
+        z-index: 999;
+        text-align: center;
+        background: $black;
+        padding: 12px 0;
+    }
+}
+
+.show_nav {
+    @include mediaWidth($ipad) {
+        display: block !important;
+        height: auto;
+        -webkit-animation-name: open;
+        /* Safari 4.0 - 8.0 */
+        -webkit-animation-duration: 0.2s;
+        /* Safari 4.0 - 8.0 */
+        -webkit-animation-timing-function: ease;
+        animation-name: open;
+        animation-duration: 0.2s;
+        animation-timing-function: ease;
+    }
+}
+
+.nav-btn {
+    cursor: pointer;
+    padding: 5px;
+    width: 35px;
+    display: none;
+    visibility: hidden;
+    position: absolute;
+    @include mediaWidth($ipad) {
+        display: block;
+        visibility: visible;
+        right: $mobile_margin;
+    }
+    .nav-btnItem {
+        background: #fff;
+        height: 4px;
+        width: 100%;
+        margin: 5px 0;
+    }
 }
 
 .nav-items {
